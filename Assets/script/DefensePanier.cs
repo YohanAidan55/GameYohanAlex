@@ -17,7 +17,6 @@ public class DefensePanier : MonoBehaviour
              if (pointDeVie <= 0)
              {                       
                   this.gameObject.GetComponentInParent<PanContent>().isDestroy = true;
-                  Destroy(this.gameObject);
              }
         }     
     }
