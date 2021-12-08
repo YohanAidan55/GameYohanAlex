@@ -117,7 +117,7 @@ public class touchFantome : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if ((other.gameObject.tag == "fantome") && (other.gameObject.GetComponent<moveInBox>().move == false))
+        if ((other.gameObject.tag == "fantome") && (other.gameObject.GetComponent<fantomeScript>().move == false))
         {
             clicFantome = true;
             fantom = other.gameObject;

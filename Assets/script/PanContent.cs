@@ -5,13 +5,17 @@ using UnityEngine;
 public class PanContent : MonoBehaviour
 {
 
+    public string color;
+
     public GameObject[] Pan = new GameObject[10];    //liste avec les 10 fantomes dans le panier
-    int i;
+    public GameObject[] Sys = new GameObject[4];     //liste des systèmes du panier
+
+    public bool isDestroy;   //passe à true si un système est détruit pour éviter l'occurence
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        isDestroy = false;
     }
 
     // Update is called once per frame
@@ -26,5 +30,37 @@ public class PanContent : MonoBehaviour
             }
             Pan[9] = null;
         }
+
+        if (isDestroy)
+        {
+            if(destruct(Sys) == 1)
+            {               
+                DestroyFantome(Pan);
+                Destroy(this.gameObject);
+            }
+
+            isDestroy = false;
+        }
     }
+
+    int destruct(GameObject[] tab)
+    {
+        for (int i = 0; i < tab.Length - 1; i++)             //parcours les sytèmes du panier
+        {
+            if(tab[i].GetComponent<DefensePanier>().pointDeVie > 0)
+            {
+                return 0;
+            }
+        }
+        return 1;    //rertourne 1 si le tableau est vide
+    }
+
+    void DestroyFantome(GameObject[] tab)       //Detruit les fantomes dans le panier
+    {
+        for (int i = 0; i < tab.Length - 1; i++)             //parcours les sytèmes du panier
+        {
+            Destroy(tab[i].gameObject);
+        }
+    }
+
 }

@@ -47,7 +47,7 @@ public class SpawnFantome : MonoBehaviour
         n += (int)Time.timeScale;
         if (n >= valApp)
         {
-            for(int i = 1; i <= nbApp; i++)
+            for(int i = 0; i < nbApp; i++)
             {
                 int nb = UnityEngine.Random.Range(0, 4);
                 spawn(nb);
