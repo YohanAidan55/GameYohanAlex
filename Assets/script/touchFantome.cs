@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class touchFantome : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class touchFantome : MonoBehaviour
     Vector2 startPos;
     Vector2 currentPos;
 
-    bool clicFantome = true; //verif si clic sur un fantome
+    bool clicFantome = false; //verif si clic sur un fantome
     bool release = true; // verif si lache
 
     int nb;
@@ -79,7 +79,7 @@ public class touchFantome : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))    //souris
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             startPos = ray.origin + ray.direction;
@@ -104,8 +104,16 @@ public class touchFantome : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))  //le touch retourne à son endroit inititial
         {
+            if (clicFantome)
+            {
+                if (fantom.GetComponent<fantomeScript>().isError)
+                {
+                    SceneManager.LoadScene("menuLose");
+                }
+            }
+
             transform.position = iniPos;
             clicFantome = false;
             release = true;

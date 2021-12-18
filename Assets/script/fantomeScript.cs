@@ -8,6 +8,8 @@ public class fantomeScript : MonoBehaviour
     int valApp;
     int n = 30;
 
+    public bool isError = false;
+
     public string color; //La couleur est définit dans ce script
 
     public GameObject fantomeMechant;
@@ -54,18 +56,25 @@ public class fantomeScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.gameObject.tag == "panier") && (other.gameObject.GetComponent<PanContent>().color == color))
-        {
-            GameObject.Find("touch").GetComponent<Score>().sc += 1;
+        if (other.gameObject.tag == "panier"){ 
 
-            int i; //index du tableau du collider panier
-            GameObject[] listFant = other.gameObject.GetComponent<PanContent>().Pan;
-            for(i = 0; i < listFant.Length; i++)
+            if(other.gameObject.GetComponent<PanContent>().color == color)
             {
-                if ((listFant[i] == null) && (ajout == false)) {    //accede seulement à la première case NonReorderableAttribute rempli
-                    listFant[i] = this.gameObject;
-                    ajout = true;
+                GameObject.Find("touch").GetComponent<Score>().sc += 1;
+
+                int i; //index du tableau du collider panier
+                GameObject[] listFant = other.gameObject.GetComponent<PanContent>().Pan;
+                for (i = 0; i < listFant.Length; i++)
+                {
+                    if ((listFant[i] == null) && (ajout == false)) {    //accede seulement à la première case NonReorderableAttribute rempli
+                        listFant[i] = this.gameObject;
+                        ajout = true;
+                    }
                 }
+                isError = false;
+
+            }else{
+                isError = true;
             }
 
         }
@@ -84,9 +93,11 @@ public class fantomeScript : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if ((other.gameObject.tag == "panier") && (other.gameObject.GetComponent<PanContent>().color == color))
-        {
-            GameObject.Find("touch").GetComponent<Score>().sc -= 1;
+        if (other.gameObject.tag == "panier"){
+              if (other.gameObject.GetComponent<PanContent>().color == color)
+              {
+                GameObject.Find("touch").GetComponent<Score>().sc -= 1;
+              }
         }
         if ((other.gameObject.tag == "tapis") && (move == false))
         {
