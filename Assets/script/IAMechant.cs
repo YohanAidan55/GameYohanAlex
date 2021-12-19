@@ -6,7 +6,8 @@ public class IAMechant : MonoBehaviour
 {
 
     public string color;
-
+    public GameObject panier;
+    public GameObject[] listPanier;
     public Transform startMarker;
     public GameObject endMarkerObject;
     public Transform endMarker;
@@ -23,7 +24,10 @@ public class IAMechant : MonoBehaviour
 
     void Start()
     {
-        endMarkerObject = GameObject.Find("systemeTest");
+        listPanier = GameObject.FindGameObjectsWithTag("panier");
+        panier = FindPanierByColor(color);
+
+        endMarkerObject = FindSecurity(panier.GetComponent<PanContent>().Sys);
         startMarker = this.GetComponent<Transform>();
         endMarker = endMarkerObject.GetComponent<Transform>();
 
@@ -53,6 +57,33 @@ public class IAMechant : MonoBehaviour
         if ((other.gameObject.tag == "systeme") && (other.gameObject.GetComponent<DefensePanier>().color == color))
         {
             other.gameObject.GetComponent<DefensePanier>().pointDeVie = 0;
+            Destroy(this.gameObject);
         }
+    }
+    
+    GameObject FindSecurity(GameObject[] tab)
+    {
+        GameObject result = null;
+        for (int i = 0; i < tab.Length - 1; i++)  
+        {
+            if (panier.GetComponent<PanContent>().Sys[i].GetComponent<DefensePanier>().pointDeVie > 0)
+            {
+                result = panier.GetComponent<PanContent>().Sys[i];
+                break;
+            }
+        }
+        return result;
+    }
+    
+    GameObject FindPanierByColor(string color) {
+        GameObject result = null;
+        for (int i = 1; i < listPanier.Length; i++)
+        {
+            if (listPanier[i].GetComponent<PanContent>().color == color) {
+                result = listPanier[i];
+                break;
+            }
+        }
+        return result;
     }
 }
