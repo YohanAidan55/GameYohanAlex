@@ -6,6 +6,8 @@ public class DefensePanier : MonoBehaviour
         public int valApp;
         private int n;
 
+        public Sprite spriteDetruit;
+
         private void Start()
         {
             color = this.gameObject.GetComponentInParent<PanContent>().color;
@@ -17,6 +19,7 @@ public class DefensePanier : MonoBehaviour
              if (pointDeVie <= 0)
              {                       
                   this.gameObject.GetComponentInParent<PanContent>().isDestroy = true;
+                  this.gameObject.GetComponent<SpriteRenderer>().sprite = spriteDetruit;
              }
         }     
     }

@@ -309,6 +309,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &344401575
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,6 +719,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &472471779
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +955,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &493461123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,6 +1083,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &529830940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1211,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &601591360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,6 +1432,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &649864894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,6 +1618,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &763316185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,6 +1746,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &910942819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,6 +1874,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &1037370490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,6 +2002,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &1057190682
 GameObject:
   m_ObjectHideFlags: 0
@@ -2231,6 +2241,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &1343733090
 GameObject:
   m_ObjectHideFlags: 0
@@ -3165,6 +3176,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &2018393022
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,7 +3190,7 @@ GameObject:
   - component: {fileID: 2018393025}
   - component: {fileID: 2018393026}
   m_Layer: 0
-  m_Name: "syst\xE8me (9)"
+  m_Name: systemeTest
   m_TagString: systeme
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3192,8 +3204,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018393022}
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
-  m_LocalPosition: {x: 23.94444, y: -16.777775, z: 0}
-  m_LocalScale: {x: 0.27777776, y: 0.27777776, z: 10}
+  m_LocalPosition: {x: 23.944439, y: -16.777782, z: 0}
+  m_LocalScale: {x: 0.2777778, y: 0.2777778, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 344401576}
@@ -3261,7 +3273,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.000030517578, y: 0}
@@ -3292,6 +3304,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &2040720426
 GameObject:
   m_ObjectHideFlags: 0
@@ -3736,6 +3749,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &2098465552
 GameObject:
   m_ObjectHideFlags: 0
@@ -4145,6 +4159,7 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!1 &2132620908
 GameObject:
   m_ObjectHideFlags: 0
@@ -4272,3 +4287,4 @@ MonoBehaviour:
   pointDeVie: 1000
   color: 
   valApp: 0
+  spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
