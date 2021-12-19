@@ -53,8 +53,9 @@ public class IAMechant : MonoBehaviour
 
 
     void OnTriggerEnter2D(Collider2D other)
-    {   //active la funtion Move si c'est le bon panier
-        if ((other.gameObject.tag == "systeme") && (other.gameObject.GetComponent<DefensePanier>().color == color))
+    {
+        if ((other.gameObject.tag == "systeme") && (other.gameObject.GetComponent<DefensePanier>().color == color)
+                                                && (other.gameObject == endMarkerObject))
         {
             other.gameObject.GetComponent<DefensePanier>().pointDeVie = 0;
             Destroy(this.gameObject);
@@ -64,7 +65,7 @@ public class IAMechant : MonoBehaviour
     GameObject FindSecurity(GameObject[] tab)
     {
         GameObject result = null;
-        for (int i = 0; i < tab.Length - 1; i++)  
+        for (int i = 0; i < tab.Length; i++)  
         {
             if (panier.GetComponent<PanContent>().Sys[i].GetComponent<DefensePanier>().pointDeVie > 0)
             {
@@ -77,7 +78,7 @@ public class IAMechant : MonoBehaviour
     
     GameObject FindPanierByColor(string color) {
         GameObject result = null;
-        for (int i = 1; i < listPanier.Length; i++)
+        for (int i = 0; i < listPanier.Length; i++)
         {
             if (listPanier[i].GetComponent<PanContent>().color == color) {
                 result = listPanier[i];
