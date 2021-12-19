@@ -9,9 +9,9 @@ public class PanContent : MonoBehaviour
     public string color;
 
     public GameObject[] Pan = new GameObject[10];    //liste avec les 10 fantomes dans le panier
-    public GameObject[] Sys = new GameObject[4];     //liste des systèmes du panier
+    public GameObject[] Sys = new GameObject[4];     //liste des systï¿½mes du panier
 
-    public bool isDestroy;   //passe à true si un système est détruit pour éviter l'occurence
+    public bool isDestroy;   //passe ï¿½ true si un systï¿½me est dï¿½truit pour ï¿½viter l'occurence
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +47,7 @@ public class PanContent : MonoBehaviour
 
     int destruct(GameObject[] tab)
     {
-        for (int i = 0; i < tab.Length - 1; i++)             //parcours les sytèmes du panier
+        for (int i = 0; i < tab.Length; i++)             //parcours les sytï¿½mes du panier
         {
             if(tab[i].GetComponent<DefensePanier>().pointDeVie > 0)
             {
@@ -59,7 +59,7 @@ public class PanContent : MonoBehaviour
 
     void DestroyFantome(GameObject[] tab)       //Detruit les fantomes dans le panier
     {
-        for (int i = 0; i < tab.Length - 1; i++)             //parcours les sytèmes du panier
+        for (int i = 0; i < tab.Length - 1; i++)             //parcours les sytï¿½mes du panier
         {
             Destroy(tab[i].gameObject);
         }

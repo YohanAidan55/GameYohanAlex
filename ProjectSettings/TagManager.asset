@@ -11,6 +11,7 @@ TagManager:
   - systeme
   - sc
   - fantomeMechant
+  - listPanier
   layers:
   - Default
   - TransparentFX
