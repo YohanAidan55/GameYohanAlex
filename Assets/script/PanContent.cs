@@ -65,4 +65,18 @@ public class PanContent : MonoBehaviour
         }
     }
 
+
+    public void resetRotation()        //fantomation rotation à 0 lorsque bonus melangePanier est active
+    {
+
+        for (int i = 0; i < Pan.Length; i++)             //parcours les syt�mes du panier
+        {
+            if(Pan[i] != null)
+            {
+                Pan[i].gameObject.transform.localRotation = this.gameObject.transform.rotation;
+            }
+        }
+    }
+
+
 }

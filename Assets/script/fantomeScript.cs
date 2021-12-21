@@ -20,40 +20,18 @@ public class fantomeScript : MonoBehaviour
 
     void Update()
     {
-        modeDeJeu = PlayerPrefs.GetInt("mode");
-        Move();
+        modeDeJeu = PlayerPrefs.GetInt("mode");      
 
         if (move == false)
         {
-            n++;
-            if (n >= valApp)
-            {
-                float a = Random.value * 100;  //choisi une couleur aléatoire
-                mass(a);
-                n = 0;
-            }
+            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -3) * Time.timeScale;
+        }
+        else
+        {
+            Move();
         }
     }
     
-    void mass(float x)
-    {
-        if (x < 25)
-        {
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -1) * Time.timeScale;
-        }
-        if ((x < 50) && (x >= 25))
-        {
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -2) * Time.timeScale;
-        }
-        if ((x < 75) && (x >= 50))
-        {
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -5) * Time.timeScale;
-        }
-        if ((x <= 100) && (x >= 75))
-        {
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -4) * Time.timeScale;
-        }
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -68,7 +46,8 @@ public class fantomeScript : MonoBehaviour
                 for (i = 0; i < listFant.Length; i++)
                 {
                     if ((listFant[i] == null) && (ajout == false)) {    //accede seulement à la première case NonReorderableAttribute rempli
-                        listFant[i] = this.gameObject;
+                        listFant[i] = this.gameObject;      //ajoute le fantome au tavbleau du panier
+                        this.gameObject.transform.parent = other.gameObject.transform;    //définit le panier du fantome comme étant son parent
                         ajout = true;
                     }
                 }
