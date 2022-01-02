@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 public class IAMechant : MonoBehaviour
@@ -10,12 +8,9 @@ public class IAMechant : MonoBehaviour
     public GameObject[] listPanier;
     public Transform startMarker;
     public GameObject endMarkerObject;
-public GameObject startMarkerObject;
     public Transform endMarker;
-	public bool colliding = false;
-	public float speed = 0.5F;
-	private NavMeshAgent agent;
-
+    private NavMeshAgent agent;
+    public Vector3 final;
 
     void Start()
     {
@@ -23,39 +18,33 @@ public GameObject startMarkerObject;
         panier = FindPanierByColor(color);
 
         endMarkerObject = FindSecurity(panier.GetComponent<PanContent>().Sys);
-        startMarker = this.GetComponent<Transform>();
         endMarker = endMarkerObject.GetComponent<Transform>();
-		//agent = this.AddComponent<NavMeshAgent>();
-		agent = this.GetComponent<NavMeshAgent>();
-    }
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
 
-    // Move to the target end position.
-    void Update()
+    }
+	void Update()
     {
-    /* if(!colliding)
-		{
-			float step = speed * Time.deltaTime;
-			transform.position = Vector2.MoveTowards(startMarker.position, endMarker.position, step);
-		//}
-    }*/
-	//agent.SetDestination(endMarker.position);
-}
+        // final = new Vector3(6.1F, -1.9F, 0.12F);
+        final = endMarker.localPosition;
+        agent.SetDestination(final);
+    }
+    
+    
     void OnTriggerEnter2D(Collider2D other)
     {
-		colliding = true;
         if ((other.gameObject.tag == "systeme") && (other.gameObject.GetComponent<DefensePanier>().color == color)
                                                 && (other.gameObject == endMarkerObject))
         {
+            Debug.Log(endMarker.localPosition);
             other.gameObject.GetComponent<DefensePanier>().pointDeVie = 0;
 			if(FindSecurity(panier.GetComponent<PanContent>().Sys) != null)
 			{
 				endMarkerObject = FindSecurity(panier.GetComponent<PanContent>().Sys);
-        		startMarker = this.GetComponent<Transform>();
+        		startMarker = GetComponent<Transform>();
         		endMarker = endMarkerObject.GetComponent<Transform>();
-				float step = speed * Time.deltaTime;
-			transform.position = Vector2.MoveTowards(startMarker.position, endMarker.position, step);
-        	
-        		//Destroy(this.gameObject);
+                Destroy(gameObject);
 			}
         }
     }
