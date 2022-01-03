@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1726517691171623075}
   - component: {fileID: 7990342876268464090}
   - component: {fileID: 7480011085253903134}
+  - component: {fileID: -4592769363779069701}
   m_Layer: 0
   m_Name: FantomeMechant
   m_TagString: fantomeMechant
@@ -29,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669860343301667205}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.997402, y: -3.1766465, z: -10}
-  m_LocalScale: {x: 0.04, y: 0.04, z: 1}
+  m_LocalPosition: {x: -2.997402, y: 0, z: 0}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f097da4d5cf2bb44a985a0156cc86a7d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -148,10 +149,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 
+  panier: {fileID: 0}
+  listPanier: []
   startMarker: {fileID: 0}
   endMarkerObject: {fileID: 0}
   endMarker: {fileID: 0}
-  speed: 1
+  final: {x: 0, y: 0, z: 0}
 --- !u!61 &7480011085253903134
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,3 +181,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 17, y: 23}
   m_EdgeRadius: 0
+--- !u!195 &-4592769363779069701
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669860343301667205}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 11.025
+  m_Speed: 2
+  m_Acceleration: 4
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 22.05
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

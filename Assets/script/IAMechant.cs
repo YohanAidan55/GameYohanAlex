@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class IAMechant : MonoBehaviour
 {
 
@@ -11,16 +9,8 @@ public class IAMechant : MonoBehaviour
     public Transform startMarker;
     public GameObject endMarkerObject;
     public Transform endMarker;
-
-    // Movement speed in units per second.
-    public float speed = 0.1F;
-
-    // Time when the movement started.
-    private float startTime;
-
-    // Total distance between the markers.
-    private float journeyLength;
-
+    private NavMeshAgent agent;
+    public Vector3 final;
 
     void Start()
     {
@@ -28,37 +18,37 @@ public class IAMechant : MonoBehaviour
         panier = FindPanierByColor(color);
 
         endMarkerObject = FindSecurity(panier.GetComponent<PanContent>().Sys);
-        startMarker = this.GetComponent<Transform>();
         endMarker = endMarkerObject.GetComponent<Transform>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        Debug.Log(endMarker.position);
 
-        // Keep a note of the time the movement started.
-        startTime = Time.time;
-
-        // Calculate the journey length.
-        journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
     }
-
-    // Move to the target end position.
-    void Update()
+	void Update()
     {
-        // Distance moved equals elapsed time times speed..
-        float distCovered = (Time.time - startTime) * speed;
-
-        // Fraction of journey completed equals current distance divided by total distance.
-        float fractionOfJourney = distCovered / journeyLength;
-
-        // Set our position as a fraction of the distance between the markers.
-        transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fractionOfJourney);
+        //final = new Vector3(6.1F, -1.9F, 0.12F);
+        final = endMarker.position;
+        final.z = 0;
+        Debug.Log(final);
+        agent.SetDestination(final);
     }
-
-
+    
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         if ((other.gameObject.tag == "systeme") && (other.gameObject.GetComponent<DefensePanier>().color == color)
                                                 && (other.gameObject == endMarkerObject))
         {
+            Debug.Log(endMarker.localPosition);
             other.gameObject.GetComponent<DefensePanier>().pointDeVie = 0;
-            Destroy(this.gameObject);
+			if(FindSecurity(panier.GetComponent<PanContent>().Sys) != null)
+			{
+				endMarkerObject = FindSecurity(panier.GetComponent<PanContent>().Sys);
+        		startMarker = GetComponent<Transform>();
+        		endMarker = endMarkerObject.GetComponent<Transform>();
+                Destroy(gameObject);
+			}
         }
     }
     

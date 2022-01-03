@@ -14,6 +14,7 @@ public class fantomeScript : MonoBehaviour
 
     public GameObject fantomeMechant;
     private GameObject FMInstantiate;
+    public GameObject parent;
 
     bool ajout = false;
 
@@ -123,8 +124,10 @@ public class fantomeScript : MonoBehaviour
 
     void transformFantome()
     {
-        Destroy(this.gameObject);
-        FMInstantiate = Instantiate(fantomeMechant, this.transform.position, this.transform.rotation);
+        Destroy(gameObject);
+        parent = GameObject.Find("NavMesh2D");
+        
+        FMInstantiate = Instantiate(fantomeMechant, transform.position, transform.rotation, parent.transform);
         FMInstantiate.GetComponent<IAMechant>().color = color; //Donne la couleur du fantome méchant
     }
     

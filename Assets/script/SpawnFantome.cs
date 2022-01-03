@@ -12,6 +12,7 @@ public class SpawnFantome : MonoBehaviour
     public GameObject fantB;
     public GameObject fantJ;
     public GameObject fantV;
+    public GameObject parent;
 
     GameObject[] fantArray;
 
@@ -71,7 +72,7 @@ public class SpawnFantome : MonoBehaviour
 
     void spawn(int color)
     {
-        Instantiate(fantArray[color], spawnPos, Quaternion.identity);
+        Instantiate(fantArray[color], spawnPos, Quaternion.identity, parent.transform);
     }
 
 }
