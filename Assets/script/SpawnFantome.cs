@@ -15,6 +15,7 @@ public class SpawnFantome : MonoBehaviour
     public GameObject parent;
 
     GameObject[] fantArray;
+    public GameObject[] tabBonus;   //tableau contenant les différents bonus
 
     public int valApp; //fréquance d'apparition des fantomes
     public int nbApp = 1; //nombre de fanrtomes par apparitions
@@ -28,6 +29,10 @@ public class SpawnFantome : MonoBehaviour
     };
 
     int n;
+    int tauxAppBonus = 2; //plus ctte variable est grande, moins il y a de chance d'avoir un bonus
+    int valAppBonus = 0;  // si un bonus doit apparaitre, temps en ms après le dernier fantome
+
+    int speedVariation = 0; //agmentation ou diminution de la vitesse si bonus/malus 
 
     int score;
 
@@ -36,7 +41,8 @@ public class SpawnFantome : MonoBehaviour
     {
         fantArray = new GameObject[] { fantR, fantB, fantJ, fantV };
 
-        
+
+        valApp = GetValFromMatrice(score, matriceApparition);   //première ValApp
     }
 
     // Update is called once per frame
@@ -46,23 +52,37 @@ public class SpawnFantome : MonoBehaviour
 
 
         n += (int)Time.timeScale;
-        if (n >= valApp)
+
+        if (n >= valApp + speedVariation)   //speed variation : modifie la vitesse d'apparition des fantomes
         {
-            for(int i = 0; i < nbApp; i++)
+            int appBonus = UnityEngine.Random.Range(0, tauxAppBonus);
+
+            if (appBonus == valAppBonus)
             {
-                int nb = UnityEngine.Random.Range(0, 4);
-                spawn(nb);
+                int nb = UnityEngine.Random.Range(0, tabBonus.Length);
+                spawnBonus(nb);
                 n = 0;
             }
+            else
+            {
+                for (int i = 0; i < nbApp; i++)    //Pour faire apparaitre plusieurs fantomes
+                {
+                    int nb = UnityEngine.Random.Range(0, 4);
+                    spawnFantome(nb);
+                    n = 0;
+                }
+            }
+
+            valApp = GetValFromMatrice(score, matriceApparition);
         }
 
 
-        valApp = GetValFromMatrice(score, matriceApparition);
 
     }
 
     private int GetValFromMatrice(int score, int[,] mat)
     {
+
         int x = nbApp - 1;
         int y = score / 10;             //ex : si score = 33 => colonne 3 de la matrice
 
@@ -70,9 +90,19 @@ public class SpawnFantome : MonoBehaviour
 
     }
 
-    void spawn(int color)
+    void spawnFantome(int color)
     {
         Instantiate(fantArray[color], spawnPos, Quaternion.identity, parent.transform);
+    }
+
+    void spawnBonus(int b)
+    {
+        Instantiate(tabBonus[b], spawnPos, Quaternion.identity);
+    }
+
+    public void SetSpeedVariation(int a)
+    {
+        speedVariation += a;
     }
 
 }
