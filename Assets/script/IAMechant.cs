@@ -11,14 +11,12 @@ public class IAMechant : MonoBehaviour
     public Transform endMarker;
     private NavMeshAgent agent;
     public Vector3 final;
-
+    private float distFinal;
     void Start()
     {
         listPanier = GameObject.FindGameObjectsWithTag("panier");
         panier = FindPanierByColor(color);
-
-        endMarkerObject = FindSecurity(panier.GetComponent<PanContent>().Sys);
-        endMarker = endMarkerObject.GetComponent<Transform>();
+        
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -26,41 +24,44 @@ public class IAMechant : MonoBehaviour
     }
 	void Update()
     {
-        //final = new Vector3(6.1F, -1.9F, 0.12F);
+        endMarkerObject = FindSecurity(panier.GetComponent<PanContent>().Sys);
+        endMarker = endMarkerObject.GetComponent<Transform>();
         final = endMarker.position;
         final.z = 0;
         agent.SetDestination(final);
     }
     
     
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if ((other.gameObject.tag == "systeme") && (other.gameObject.GetComponent<DefensePanier>().color == color)
                                                 && (other.gameObject == endMarkerObject))
         {
-            other.gameObject.GetComponent<DefensePanier>().pointDeVie = 0;
-			if(FindSecurity(panier.GetComponent<PanContent>().Sys) != null)
-			{
-				endMarkerObject = FindSecurity(panier.GetComponent<PanContent>().Sys);
-        		startMarker = GetComponent<Transform>();
-        		endMarker = endMarkerObject.GetComponent<Transform>();
-                Destroy(gameObject);
-			}
+            other.gameObject.GetComponent<DefensePanier>().pointDeVie -= 2;
         }
     }
     
     GameObject FindSecurity(GameObject[] tab)
     {
-        GameObject result = null;
+        GameObject result;
+        GameObject resultFinal = null;
+        float dist = 10000F;
         for (int i = 0; i < tab.Length; i++)  
         {
             if (panier.GetComponent<PanContent>().Sys[i].GetComponent<DefensePanier>().pointDeVie > 0)
             {
                 result = panier.GetComponent<PanContent>().Sys[i];
-                break;
+                distFinal = Vector3.Distance(gameObject.transform.position, result.transform.position);
+                
+                if (distFinal < dist)
+                {
+                    dist = distFinal;
+                    resultFinal = panier.GetComponent<PanContent>().Sys[i];
+                }
+                //break;
             }
         }
-        return result;
+        return resultFinal;
     }
     
     GameObject FindPanierByColor(string color) {
