@@ -1060,6 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd01bd6cdad1fa4d9429bcc74a85bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nbCartouche: 0
 --- !u!114 &472471785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1078,6 +1079,11 @@ MonoBehaviour:
   fantJ: {fileID: 1852054023168640, guid: 07e229844f4dfe748b0959f34e09067c, type: 3}
   fantV: {fileID: 1354779119729254, guid: f0f783c6036eb9c4e8903924a4ae9b2b, type: 3}
   parent: {fileID: 314934313}
+  tabBonus:
+  - {fileID: 6845074108772801880, guid: debd2001f9dcdaa45aa66772b40f77da, type: 3}
+  - {fileID: 7186996851953320986, guid: 0dc8fee7921d33141a57175b0b114473, type: 3}
+  - {fileID: 8301624759757415648, guid: da2f25ba0ac5e26458d4df45b0ca8841, type: 3}
+  - {fileID: 4704479544104412323, guid: 9b65e36144a85c145ab6ce9c1d26265a, type: 3}
   valApp: 500
   nbApp: 1
 --- !u!1 &475118912
