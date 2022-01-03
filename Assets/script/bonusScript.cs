@@ -25,18 +25,24 @@ public class bonusScript : MonoBehaviour
 
     public void BonusSelected()
     {
-        if(n == 0)
+        if (n == 0)
         {
             MelangePanier();
-        }else if(n == 1)
+        }
+        else if (n == 1)
         {
             SpeedUp();
-        }else if(n == 2)
+        }
+        else if (n == 2)
         {
             SpeedDown();
         }
+        else if (n == 3)
+        {
+            AddCartouche();
+        }
 
-        Destroy(this.gameObject);
+            Destroy(this.gameObject);
     }
 
 
@@ -85,6 +91,12 @@ public class bonusScript : MonoBehaviour
         LancerTimer(1000);
 
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);  //fin de la variation de la vitesse
+    }
+
+
+    void AddCartouche()
+    {
+        spawn.GetComponent<touchFantome>().nbCartouche++;
     }
 
 

@@ -12,15 +12,17 @@ public class touchFantome : MonoBehaviour
 
     bool clicFantome = false; //verif si clic sur un fantome
     bool release = true; // verif si lache
-
     int nb;
-
     GameObject fantom;
+
+    public int nbCartouche; //nombre de cartouche antiFantome du joueur
+    bool exploded = false;
 
     // Start is called before the first frame update
     void Start()
     {
         iniPos = transform.position;
+        //nbCartouche = 0; //commence la partie avec 0 cartouche antiFantome
     }
 
     // Update is called once per frame
@@ -90,6 +92,8 @@ public class touchFantome : MonoBehaviour
                 fantom.transform.position = startPos;
             } 
             release = false;
+
+            //exploded = true;
         }
 
         if (release == false)
@@ -103,6 +107,8 @@ public class touchFantome : MonoBehaviour
                 fantom.transform.position = currentPos;
             }
         }
+
+        
 
         if (Input.GetMouseButtonUp(0))  //le touch retourne à son endroit inititial
         {
@@ -118,6 +124,7 @@ public class touchFantome : MonoBehaviour
             clicFantome = false;
             release = true;
             fantom = null;
+            //exploded = false;
         }
 
     }
@@ -135,5 +142,15 @@ public class touchFantome : MonoBehaviour
         {
             other.gameObject.GetComponent<bonusScript>().BonusSelected();
         }
+
+        /*if ((other.gameObject.tag == "fantomeMechant") && (nbCartouche > 0) && !release)
+        {
+            //this.GetComponent<CapsuleCollider2D>().enabled = true;
+            exploded = true;
+            //Destroy(other.gameObject);
+            //nbCartouch--;
+        }*/
+
     }
+
 }
