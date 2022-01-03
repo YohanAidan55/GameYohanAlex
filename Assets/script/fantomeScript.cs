@@ -115,7 +115,7 @@ public class fantomeScript : MonoBehaviour
         if (move == true)
         {
             n += 1;
-            if (n > 30)
+            if (n > 50)
             {
                 this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2) * Time.timeScale);
                 n = 0;
