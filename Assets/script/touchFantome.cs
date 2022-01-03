@@ -133,8 +133,7 @@ public class touchFantome : MonoBehaviour
 
         if (other.gameObject.tag == "bonus")
         {
-            other.gameObject.GetComponent<bonusScript>().bonusSelected();
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<bonusScript>().BonusSelected();
         }
     }
 }

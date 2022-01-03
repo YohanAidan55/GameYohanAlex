@@ -15,7 +15,7 @@ public class SpawnFantome : MonoBehaviour
     public GameObject parent;
 
     GameObject[] fantArray;
-    public GameObject[] tabBonus = new GameObject[1];   //tableau contenant les différents bonus
+    public GameObject[] tabBonus;   //tableau contenant les différents bonus
 
     public int valApp; //fréquance d'apparition des fantomes
     public int nbApp = 1; //nombre de fanrtomes par apparitions
@@ -31,6 +31,8 @@ public class SpawnFantome : MonoBehaviour
     int n;
     int tauxAppBonus = 2; //plus ctte variable est grande, moins il y a de chance d'avoir un bonus
     int valAppBonus = 0;  // si un bonus doit apparaitre, temps en ms après le dernier fantome
+
+    int speedVariation = 0; //agmentation ou diminution de la vitesse si bonus/malus 
 
     int score;
 
@@ -50,14 +52,15 @@ public class SpawnFantome : MonoBehaviour
 
 
         n += (int)Time.timeScale;
-        if (n >= valApp)
+
+        if (n >= valApp + speedVariation)   //speed variation : modifie la vitesse d'apparition des fantomes
         {
             int appBonus = UnityEngine.Random.Range(0, tauxAppBonus);
 
             if (appBonus == valAppBonus)
             {
-                //int nb = UnityEngine.Random.Range(0, tabBonus.Length);
-                spawnBonus(0);
+                int nb = UnityEngine.Random.Range(0, tabBonus.Length);
+                spawnBonus(nb);
                 n = 0;
             }
             else
@@ -95,6 +98,11 @@ public class SpawnFantome : MonoBehaviour
     void spawnBonus(int b)
     {
         Instantiate(tabBonus[b], spawnPos, Quaternion.identity);
+    }
+
+    public void SetSpeedVariation(int a)
+    {
+        speedVariation += a;
     }
 
 }

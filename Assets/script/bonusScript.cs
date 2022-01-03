@@ -7,10 +7,12 @@ public class bonusScript : MonoBehaviour
 
     public int n;   //type du bonus indiquant la fonction à utiliser
 
+    GameObject spawn;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawn = GameObject.Find("touch");
     }
 
 
@@ -21,16 +23,24 @@ public class bonusScript : MonoBehaviour
     }
 
 
-    public void bonusSelected()
+    public void BonusSelected()
     {
         if(n == 0)
         {
-            melangePanier();
+            MelangePanier();
+        }else if(n == 1)
+        {
+            SpeedUp();
+        }else if(n == 2)
+        {
+            SpeedDown();
         }
+
+        Destroy(this.gameObject);
     }
 
 
-    void melangePanier()
+    void MelangePanier()
     {
         Transform vert = GameObject.Find("PanierVert").transform;
         Vector3 x = vert.transform.position;
@@ -53,4 +63,37 @@ public class bonusScript : MonoBehaviour
         GameObject.Find("PanierBleu").GetComponent<PanContent>().resetRotation();   //repasse la rotation à 0 pour les fantomes dans les paniers
 
     }
+
+
+    void SpeedUp()
+    {
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);
+        this.gameObject.tag = null;        //retire le tag pour ne pas recliquer sur le bonus
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = null;       //retire le sprite
+
+        LancerTimer(1000);
+
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(50);  //fin de la variation de la vitesse
+    }
+
+    void SpeedDown()
+    {
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(50);
+        this.gameObject.tag = null;
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+
+        LancerTimer(1000);
+
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);  //fin de la variation de la vitesse
+    }
+
+
+    void LancerTimer(int n)
+    {
+        while(n > 0)
+        {
+            n -= (int)Time.timeScale;
+        }
+    }
+
 }
