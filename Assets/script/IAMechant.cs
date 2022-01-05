@@ -22,7 +22,6 @@ public class IAMechant : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        Debug.Log(endMarker.position);
 
     }
 	void Update()
@@ -30,7 +29,6 @@ public class IAMechant : MonoBehaviour
         //final = new Vector3(6.1F, -1.9F, 0.12F);
         final = endMarker.position;
         final.z = 0;
-        Debug.Log(final);
         agent.SetDestination(final);
     }
     
@@ -40,7 +38,6 @@ public class IAMechant : MonoBehaviour
         if ((other.gameObject.tag == "systeme") && (other.gameObject.GetComponent<DefensePanier>().color == color)
                                                 && (other.gameObject == endMarkerObject))
         {
-            Debug.Log(endMarker.localPosition);
             other.gameObject.GetComponent<DefensePanier>().pointDeVie = 0;
 			if(FindSecurity(panier.GetComponent<PanContent>().Sys) != null)
 			{

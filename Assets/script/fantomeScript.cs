@@ -18,6 +18,8 @@ public class fantomeScript : MonoBehaviour
 
     bool ajout = false;
 
+    int valScore;
+
     void Update()
     {
         modeDeJeu = PlayerPrefs.GetInt("mode");      
@@ -30,6 +32,8 @@ public class fantomeScript : MonoBehaviour
         {
             Move();
         }
+
+        valScore = GameObject.Find("touch").GetComponent<SpawnFantome>().getValScore();
     }
     
 
@@ -39,7 +43,7 @@ public class fantomeScript : MonoBehaviour
 
             if(other.gameObject.GetComponent<PanContent>().color == color)
             {
-                GameObject.Find("touch").GetComponent<Score>().sc += 1;
+                GameObject.Find("touch").GetComponent<Score>().sc += valScore;
 
                 int i; //index du tableau du collider panier
                 GameObject[] listFant = other.gameObject.GetComponent<PanContent>().Pan;
@@ -76,7 +80,7 @@ public class fantomeScript : MonoBehaviour
         if (other.gameObject.tag == "panier"){
               if (other.gameObject.GetComponent<PanContent>().color == color)
               {
-                GameObject.Find("touch").GetComponent<Score>().sc -= 1;
+                GameObject.Find("touch").GetComponent<Score>().sc -= valScore;
               }
         }
         if ((other.gameObject.tag == "tapis") && (move == false))

@@ -9,6 +9,8 @@ public class bonusScript : MonoBehaviour
 
     GameObject spawn;
 
+    bool isEffected = false; //indique si le bonus a été utilisé 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,29 +22,41 @@ public class bonusScript : MonoBehaviour
     void Update()
     {
         this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -3) * Time.timeScale;
+        if((this.transform.position.y <= -10)&&(!isEffected))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 
     public void BonusSelected()
     {
-        if (n == 0)
+        if (!isEffected)
         {
-            MelangePanier();
-        }
-        else if (n == 1)
-        {
-            SpeedUp();
-        }
-        else if (n == 2)
-        {
-            SpeedDown();
-        }
-        else if (n == 3)
-        {
-            AddCartouche();
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = null;       //retire le sprite
+            if (n == 0)
+            {
+                MelangePanier();
+            }
+            else if (n == 1)
+            {
+                StartCoroutine(SpeedUp());
+            }
+            else if (n == 2)
+            {
+                StartCoroutine(SpeedDown());
+            }
+            else if (n == 3)
+            {
+                AddCartouche();
+            }
+            else if (n == 4)
+            {
+                StartCoroutine(Combo());
+            }
         }
 
-            Destroy(this.gameObject);
+        isEffected = true;  //empeche le joueur de cliquer deux fois sur le bonus
     }
 
 
@@ -68,44 +82,57 @@ public class bonusScript : MonoBehaviour
         GameObject.Find("PanierBleu").transform.rotation = y;
         GameObject.Find("PanierBleu").GetComponent<PanContent>().resetRotation();   //repasse la rotation à 0 pour les fantomes dans les paniers
 
+        Destroy(this.gameObject);
+
     }
 
 
-    void SpeedUp()
+    IEnumerator SpeedUp()
     {
-        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);
-        this.gameObject.tag = null;        //retire le tag pour ne pas recliquer sur le bonus
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = null;       //retire le sprite
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);     
 
-        LancerTimer(1000);
+        yield return new WaitForSeconds(10f);
+        Debug.Log("timeEnd");
 
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(50);  //fin de la variation de la vitesse
+        Destroy(this.gameObject);
+
     }
 
-    void SpeedDown()
+    IEnumerator SpeedDown()
     {
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(50);
-        this.gameObject.tag = null;
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = null;
 
-        LancerTimer(1000);
+        yield return new WaitForSeconds(10f);
+        Debug.Log("timeEnd");
 
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);  //fin de la variation de la vitesse
+        Destroy(this.gameObject);
+
     }
 
 
     void AddCartouche()
     {
         spawn.GetComponent<touchFantome>().nbCartouche++;
+        Destroy(this.gameObject);
     }
 
 
-    void LancerTimer(int n)
+    IEnumerator Combo()
     {
-        while(n > 0)
-        {
-            n -= (int)Time.timeScale;
-        }
+        spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() * 2);
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);
+        spawn.GetComponent<SpawnFantome>().appVariation = 0;
+
+        yield return new WaitForSeconds(10f);
+        Debug.Log("timeEnd");
+
+        spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() / 2);
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(50);
+        spawn.GetComponent<SpawnFantome>().appVariation = 0;
+        Destroy(this.gameObject);
+
     }
 
 }
