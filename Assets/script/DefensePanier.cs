@@ -1,10 +1,11 @@
 using UnityEngine;
 public class DefensePanier : MonoBehaviour
     {
-        public int pointDeVie = 1000;
+        public float pointDeVie = 1000;
         public string color;
         public int valApp;
         private int n;
+        public int nbrEnnemy = 0;
 
         public Sprite spriteDetruit;
 
@@ -22,4 +23,20 @@ public class DefensePanier : MonoBehaviour
                   this.gameObject.GetComponent<SpriteRenderer>().sprite = spriteDetruit;
              }
         }     
+        
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if ((other.gameObject.tag == "fantomeMechant") && (color == other.gameObject.GetComponent<IAMechant>().color))
+            {
+                nbrEnnemy += 1;
+            }
+        }
+        
+        void OnTriggerExit2D(Collider2D other)
+        {
+            if ((other.gameObject.tag == "fantomeMechant") && (color == other.gameObject.GetComponent<IAMechant>().color))
+            {
+                nbrEnnemy -= 1;
+            }
+        }
     }
