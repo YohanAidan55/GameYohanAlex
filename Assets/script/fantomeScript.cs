@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class fantomeScript : MonoBehaviour
+ public class fantomeScript : MonoBehaviour
 {
     public int modeDeJeu;
     public bool move = false;
@@ -50,17 +52,11 @@ public class fantomeScript : MonoBehaviour
             if (other.gameObject.GetComponent<PanContent>().color == color)
             {
                 GameObject.Find("touch").GetComponent<Score>().sc += valScore;
-
-                int i; //index du tableau du collider panier
-                GameObject[] listFant = other.gameObject.GetComponent<PanContent>().Pan;
-                for (i = 0; i < listFant.Length; i++)
-                {
-                    if ((listFant[i] == null) && (ajout == false))
-                    {    //accede seulement à la première case NonReorderableAttribute rempli
-                        listFant[i] = this.gameObject;      //ajoute le fantome au tavbleau du panier
-                        this.gameObject.transform.parent = other.gameObject.transform;    //définit le panier du fantome comme étant son parent
+                List<GameObject> listFant = other.gameObject.GetComponent<PanContent>().Pan;
+                if (ajout == false) {    //accede seulement à la première case NonReorderableAttribute rempli
+                    listFant.Add(gameObject);      //ajoute le fantome au tableau du panier
+                        gameObject.transform.parent = other.gameObject.transform;    //définit le panier du fantome comme étant son parent
                         ajout = true;
-                    }
                 }
                 isError = false;
             }
@@ -70,6 +66,14 @@ public class fantomeScript : MonoBehaviour
         if(other.gameObject.tag == "Respawn")
         {
             isEnter = true;
+            if (modeDeJeu == 2)
+            {
+               // transformFantome();
+            }
+            else if (modeDeJeu == 1)
+            {
+                StartCoroutine(GameObject.Find("touch").GetComponent<touchFantome>().LunchLose());
+            }
         }
 
     }
@@ -92,7 +96,7 @@ public class fantomeScript : MonoBehaviour
             }
             else if (modeDeJeu == 1)
             {
-                GameObject.Find("touch").GetComponent<touchFantome>().LunchLose();
+                StartCoroutine(GameObject.Find("touch").GetComponent<touchFantome>().LunchLose());
             }
         }
     }
