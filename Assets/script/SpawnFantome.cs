@@ -32,9 +32,12 @@ public class SpawnFantome : MonoBehaviour
     int tauxAppBonus = 2; //plus ctte variable est grande, moins il y a de chance d'avoir un bonus
     int valAppBonus = 0;  // si un bonus doit apparaitre, temps en ms après le dernier fantome
 
-    int speedVariation = 0; //agmentation ou diminution de la vitesse si bonus/malus 
+    public int speedVariation = 0; //agmentation ou diminution de la vitesse si bonus/malus 
+    int appMin = 60;
+    public int appVariation = 0;
 
     int score;
+    int valScore;  //combien de point par fantome ajouté
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,7 @@ public class SpawnFantome : MonoBehaviour
 
 
         valApp = GetValFromMatrice(score, matriceApparition);   //première ValApp
+        valScore = 1;
     }
 
     // Update is called once per frame
@@ -53,7 +57,7 @@ public class SpawnFantome : MonoBehaviour
 
         n += (int)Time.timeScale;
 
-        if (n >= valApp + speedVariation)   //speed variation : modifie la vitesse d'apparition des fantomes
+        if ((n >= valApp + speedVariation)&&(n >= appMin))   //speed variation : modifie la vitesse d'apparition des fantomes
         {
             int appBonus = UnityEngine.Random.Range(0, tauxAppBonus);
 
@@ -76,7 +80,11 @@ public class SpawnFantome : MonoBehaviour
             valApp = GetValFromMatrice(score, matriceApparition);
         }
 
-
+        if(score > 10)
+        {
+            nbApp = score / 10 + 1 + appVariation;
+        }
+        
 
     }
 
@@ -103,6 +111,16 @@ public class SpawnFantome : MonoBehaviour
     public void SetSpeedVariation(int a)
     {
         speedVariation += a;
+    }
+
+    public void setValScore(int a)
+    {
+        valScore = a;
+    }
+
+    public int getValScore()
+    {
+        return valScore;
     }
 
 }

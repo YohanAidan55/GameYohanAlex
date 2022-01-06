@@ -17,12 +17,13 @@ public class touchFantome : MonoBehaviour
 
     public int nbCartouche; //nombre de cartouche antiFantome du joueur
     bool exploded = false;
+    bool mechantTouch = false;
 
     // Start is called before the first frame update
     void Start()
     {
         iniPos = transform.position;
-        //nbCartouche = 0; //commence la partie avec 0 cartouche antiFantome
+        nbCartouche = 0; //commence la partie avec 0 cartouche antiFantome
     }
 
     // Update is called once per frame
@@ -92,8 +93,7 @@ public class touchFantome : MonoBehaviour
                 fantom.transform.position = startPos;
             } 
             release = false;
-
-            //exploded = true;
+            
         }
 
         if (release == false)
@@ -105,6 +105,11 @@ public class touchFantome : MonoBehaviour
             if ((clicFantome == true)&&(fantom != null))
             {
                 fantom.transform.position = currentPos;
+            }
+
+            if ((Input.GetAxis("Mouse X") != 0) || (Input.GetAxis("Mouse Y") != 0))     //si la souris bouge, alors les cartouches anti-fatnomes ne fonctionnent pas
+            {
+                exploded = true;
             }
         }
 
@@ -124,11 +129,16 @@ public class touchFantome : MonoBehaviour
             clicFantome = false;
             release = true;
             fantom = null;
-            //exploded = false;
+            exploded = false;
+        }
+
+        if (mechantTouch)   //si le joueur a utilisé une cartourhce
+        {
+            nbCartouche--;
+            mechantTouch = false;
         }
 
     }
-
 
     void OnTriggerStay2D(Collider2D other)
     {
@@ -138,19 +148,20 @@ public class touchFantome : MonoBehaviour
             fantom = other.gameObject;
         }
 
-        if (other.gameObject.tag == "bonus")
+        if ((other.gameObject.tag == "bonus") && !exploded)
         {
             other.gameObject.GetComponent<bonusScript>().BonusSelected();
         }
+    }
 
-        /*if ((other.gameObject.tag == "fantomeMechant") && (nbCartouche > 0) && !release)
-        {
-            //this.GetComponent<CapsuleCollider2D>().enabled = true;
-            exploded = true;
-            //Destroy(other.gameObject);
-            //nbCartouch--;
-        }*/
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+       if ((other.gameObject.tag == "fantomeMechant") && (nbCartouche > 0) && !release && !exploded)
+       {
+            Destroy(other.gameObject);
+            mechantTouch = true;
+        }
     }
 
 }
