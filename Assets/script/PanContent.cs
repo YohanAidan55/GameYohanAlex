@@ -9,7 +9,7 @@ public class PanContent : MonoBehaviour
     public string color;
 
     public GameObject[] Pan = new GameObject[10];    //liste avec les 10 fantomes dans le panier
-    public GameObject[] Sys = new GameObject[4];     //liste des syst�mes du panier
+    public GameObject[] Sys = new GameObject[3];     //liste des syst�mes du panier
 
     public bool isDestroy;   //passe � true si un syst�me est d�truit pour �viter l'occurence
 

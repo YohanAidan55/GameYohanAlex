@@ -86,7 +86,6 @@ public class IAMechant : MonoBehaviour
         {
             nbrEnnemyMin2 = FindNbrEnnemyMin(list1, nbrEnnemyMin);
             list2 = FindSecurityWithSameNbrEnnemy(list1, nbrEnnemyMin2);
-            Debug.Log(list2.Count);
             security = FindDistanceMin(list2, dist);
         }
         return security;
