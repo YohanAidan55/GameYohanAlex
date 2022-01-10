@@ -11,8 +11,8 @@ public class touchFantome : MonoBehaviour
     Vector2 currentPos;
 
     bool clicFantome = false; //verif si clic sur un fantome
-    bool release = true; // verif si lache
-    int nb;
+    public bool release = true; // verif si lache
+    public int nb;
     GameObject fantom;
 
     public int nbCartouche; //nombre de cartouche antiFantome du joueur
@@ -31,7 +31,7 @@ public class touchFantome : MonoBehaviour
     {
 
 
-        if (Input.touchCount > 0)           //tactile
+        if (Input.touchCount > nb)           //tactile
         {
             Touch touch = Input.GetTouch(nb);
             switch (touch.phase)
@@ -40,11 +40,12 @@ public class touchFantome : MonoBehaviour
                 case TouchPhase.Began: //le touch prend la valeur de l'endroit où l'on clique
 
                     var ray = Camera.main.ScreenPointToRay(touch.position); //récupère la position du clic
+                    //startPos = Camera.main.ScreenToWorldPoint(touch.position);
                     startPos = ray.origin + ray.direction;
 
                     this.transform.position = startPos;
 
-                    this.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+                  //  this.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
 
                     if (clicFantome == true)
                     {
@@ -62,21 +63,38 @@ public class touchFantome : MonoBehaviour
 
                     this.transform.position = currentPos;
 
-                    this.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+                    //this.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
 
                     if (clicFantome == true)
                     {
                         fantom.transform.position = currentPos;
                     }
 
+                    exploded = true;
+
                     break;
 
                 case TouchPhase.Ended: //le touch retourne à son endroit inititial
 
-                    this.transform.position = iniPos;
+                    if (clicFantome)
+                    {
+                        if (fantom.GetComponent<fantomeScript>().isError)
+                        {
+                            LunchLose();
+                        }
+
+                        if (!fantom.GetComponent<fantomeScript>().move)
+                        {
+                            fantom.GetComponent<fantomeScript>().transformFantome();
+                            fantom = null;
+                        }
+                    }
+
+                    transform.position = iniPos;
                     clicFantome = false;
                     release = true;
                     fantom = null;
+                    exploded = false;
 
                     break;
             }
@@ -121,7 +139,13 @@ public class touchFantome : MonoBehaviour
             {
                 if (fantom.GetComponent<fantomeScript>().isError)
                 {
-                    SceneManager.LoadScene("menuLose");
+                    LunchLose();
+                }
+
+                if (!fantom.GetComponent<fantomeScript>().move)
+                {
+                    fantom.GetComponent<fantomeScript>().transformFantome();
+                    fantom = null;
                 }
             }
 
@@ -142,10 +166,11 @@ public class touchFantome : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if ((other.gameObject.tag == "fantome") && (other.gameObject.GetComponent<fantomeScript>().move == false))          //si le joueur touche un fantome pas emprisoné
+        if ((other.gameObject.tag == "fantome") && (other.gameObject.GetComponent<fantomeScript>().move == false) && (fantom == null))          //si le joueur touche un fantome pas emprisoné, et qu'il en a pas déjà attrapé un
         {
             clicFantome = true;
             fantom = other.gameObject;
+            fantom.GetComponent<fantomeScript>().isCatch = true;
         }
 
         if ((other.gameObject.tag == "bonus") && !exploded)
@@ -164,4 +189,9 @@ public class touchFantome : MonoBehaviour
         }
     }
 
+
+    public void LunchLose()
+    {
+        SceneManager.LoadScene("menuLose");
+    }
 }

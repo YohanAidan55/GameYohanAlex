@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class fantomeScript : MonoBehaviour
 {
     public int modeDeJeu;
     public bool move = false;
-    int valApp;
+    public bool isCatch = false;
+    bool isEnter; //vérifie si le fantome est entré dans la scène
     int n = 30;
 
     public bool isError = false;
@@ -34,14 +34,20 @@ public class fantomeScript : MonoBehaviour
         }
 
         valScore = GameObject.Find("touch").GetComponent<SpawnFantome>().getValScore();
+
+        if (isEnter)
+        {
+            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = !move;    //passe le isTrigger à true uniquement lorsque le fantome est dans le panier
+        }
+
     }
-    
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "panier"){ 
+        if (other.gameObject.tag == "panier"){
 
-            if(other.gameObject.GetComponent<PanContent>().color == color)
+            if (other.gameObject.GetComponent<PanContent>().color == color)
             {
                 GameObject.Find("touch").GetComponent<Score>().sc += valScore;
 
@@ -49,30 +55,23 @@ public class fantomeScript : MonoBehaviour
                 GameObject[] listFant = other.gameObject.GetComponent<PanContent>().Pan;
                 for (i = 0; i < listFant.Length; i++)
                 {
-                    if ((listFant[i] == null) && (ajout == false)) {    //accede seulement à la première case NonReorderableAttribute rempli
+                    if ((listFant[i] == null) && (ajout == false))
+                    {    //accede seulement à la première case NonReorderableAttribute rempli
                         listFant[i] = this.gameObject;      //ajoute le fantome au tavbleau du panier
                         this.gameObject.transform.parent = other.gameObject.transform;    //définit le panier du fantome comme étant son parent
                         ajout = true;
                     }
                 }
                 isError = false;
-
-            }else{
-                isError = true;
             }
 
         }
-        if ((other.gameObject.tag == "tapis") && (move == false))
+
+        if(other.gameObject.tag == "Respawn")
         {
-            if (modeDeJeu == 2)
-            {
-               // transformFantome();
-            }
-            else if (modeDeJeu == 1)
-            {
-                SceneManager.LoadScene("menuLose"); 
-            }
+            isEnter = true;
         }
+
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -81,9 +80,11 @@ public class fantomeScript : MonoBehaviour
               if (other.gameObject.GetComponent<PanContent>().color == color)
               {
                 GameObject.Find("touch").GetComponent<Score>().sc -= valScore;
+                move = false;
               }
+              else { isError = false; }
         }
-        if ((other.gameObject.tag == "tapis") && (move == false))
+        if ((other.gameObject.tag == "tapis") && (move == false) && !isCatch)
         {
             if (modeDeJeu == 2)
             {
@@ -91,7 +92,7 @@ public class fantomeScript : MonoBehaviour
             }
             else if (modeDeJeu == 1)
             {
-                SceneManager.LoadScene("menuLose"); 
+                GameObject.Find("touch").GetComponent<touchFantome>().LunchLose();
             }
         }
     }
@@ -102,10 +103,15 @@ public class fantomeScript : MonoBehaviour
         {
             move = true;
         }
+
+        if ((other.gameObject.tag == "panier") && (other.gameObject.GetComponent<PanContent>().color != color))
+        {
+            isError = true;
+        }
     }
 
 
-    void transformFantome()
+    public void transformFantome()
     {
         Destroy(gameObject);
         parent = GameObject.Find("NavMesh2D");

@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeDeJeu: 0
   move: 0
+  isCatch: 0
   isError: 0
   color: jaune
   fantomeMechant: {fileID: 1669860343301667205, guid: 466964ca410e37a4990c59a9842538be,

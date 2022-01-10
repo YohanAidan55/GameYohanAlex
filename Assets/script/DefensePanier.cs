@@ -3,7 +3,7 @@ public class DefensePanier : MonoBehaviour
     {
         public float pointDeVie = 1000;
         public string color;
-        public int valApp;
+        public bool angle;
         private int n;
         public int nbrEnnemy = 0;
 

@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 1
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &281717471
@@ -365,7 +365,7 @@ Transform:
   - {fileID: 472471782}
   - {fileID: 1286578381}
   - {fileID: 914990539}
-  - {fileID: 900774580}
+  - {fileID: 1173518213}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -788,7 +788,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.024508476, y: 0}
+  m_Offset: {x: -0.024508476, y: -0.26881838}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -799,7 +799,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 21.601686, y: 9.935654}
+  m_Size: {x: 21.601686, y: 10.47329}
   m_EdgeRadius: 0
 --- !u!1 &472471779
 GameObject:
@@ -850,7 +850,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.21730375
+  m_Radius: 0.093128026
 --- !u!4 &472471782
 Transform:
   m_ObjectHideFlags: 0
@@ -890,6 +890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd01bd6cdad1fa4d9429bcc74a85bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  release: 1
+  nb: 0
   nbCartouche: 10
 --- !u!114 &472471785
 MonoBehaviour:
@@ -1046,7 +1048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 1
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &475118917
@@ -1192,7 +1194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 1
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &529830945
@@ -1431,7 +1433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &635435171
@@ -1635,7 +1637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 1
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &743972796
@@ -1781,7 +1783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &763316190
@@ -1791,81 +1793,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763316185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
---- !u!1 &900774579
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 900774580}
-  - component: {fileID: 900774582}
-  - component: {fileID: 900774581}
-  m_Layer: 0
-  m_Name: colliderEmpty (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &900774580
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900774579}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1.5878309, y: 0.05131464, z: 0.74202204}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 314934315}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &900774581
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900774579}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -9.862722, y: 1.8480811}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.462944, y: 4.27085}
-  m_EdgeRadius: 0
---- !u!114 &900774582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900774579}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
@@ -2077,7 +2004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &1037370495
@@ -2196,7 +2123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.5441177, g: 0.5441177, b: 0.5441177, a: 1}
   m_FlipX: 0
@@ -2351,7 +2278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &1125251686
@@ -2370,6 +2297,70 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!1 &1173518212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1173518213}
+  - component: {fileID: 1173518215}
+  - component: {fileID: 1173518214}
+  m_Layer: 0
+  m_Name: touch2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1173518213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173518212}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 11.27, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 314934315}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1173518214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173518212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd01bd6cdad1fa4d9429bcc74a85bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  release: 1
+  nb: 1
+  nbCartouche: 10
+--- !u!58 &1173518215
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173518212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.093128026
 --- !u!1 &1286578380
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,7 +2374,7 @@ GameObject:
   - component: {fileID: 1286578382}
   m_Layer: 0
   m_Name: colliderEmpty
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3367,7 +3358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &1971231507
@@ -3835,7 +3826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &2090408872
@@ -4251,7 +4242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &2115938255
@@ -4397,7 +4388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointDeVie: 1000
   color: 
-  valApp: 0
+  angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
 --- !u!114 &2132620913
