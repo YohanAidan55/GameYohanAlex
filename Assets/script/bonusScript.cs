@@ -5,11 +5,11 @@ using UnityEngine;
 public class bonusScript : MonoBehaviour
 {
 
-    public int n;   //type du bonus indiquant la fonction à utiliser
+    public int n;   //type du bonus indiquant la fonction ï¿½ utiliser
 
     GameObject spawn;
 
-    bool isEffected = false; //indique si le bonus a été utilisé 
+    bool isEffected = false; //indique si le bonus a ï¿½tï¿½ utilisï¿½ 
 
     // Start is called before the first frame update
     void Start()
@@ -68,19 +68,19 @@ public class bonusScript : MonoBehaviour
 
         GameObject.Find("PanierVert").transform.position = GameObject.Find("PanierRouge").transform.position;
         GameObject.Find("PanierVert").transform.rotation = GameObject.Find("PanierRouge").transform.rotation;
-        GameObject.Find("PanierVert").GetComponent<PanContent>().resetRotation();   //repasse la rotation à 0 pour les fantomes dans les paniers
+        GameObject.Find("PanierVert").GetComponent<PanContent>().resetRotation();   //repasse la rotation ï¿½ 0 pour les fantomes dans les paniers
 
         GameObject.Find("PanierRouge").transform.position = GameObject.Find("PanierJaune").transform.position;
         GameObject.Find("PanierRouge").transform.rotation = GameObject.Find("PanierJaune").transform.rotation;
-        GameObject.Find("PanierRouge").GetComponent<PanContent>().resetRotation();   //repasse la rotation à 0 pour les fantomes dans les paniers
+        GameObject.Find("PanierRouge").GetComponent<PanContent>().resetRotation();   //repasse la rotation ï¿½ 0 pour les fantomes dans les paniers
 
         GameObject.Find("PanierJaune").transform.position = GameObject.Find("PanierBleu").transform.position;
         GameObject.Find("PanierJaune").transform.rotation = GameObject.Find("PanierBleu").transform.rotation;
-        GameObject.Find("PanierJaune").GetComponent<PanContent>().resetRotation();   //repasse la rotation à 0 pour les fantomes dans les paniers
+        GameObject.Find("PanierJaune").GetComponent<PanContent>().resetRotation();   //repasse la rotation ï¿½ 0 pour les fantomes dans les paniers
 
         GameObject.Find("PanierBleu").transform.position = x;
         GameObject.Find("PanierBleu").transform.rotation = y;
-        GameObject.Find("PanierBleu").GetComponent<PanContent>().resetRotation();   //repasse la rotation à 0 pour les fantomes dans les paniers
+        GameObject.Find("PanierBleu").GetComponent<PanContent>().resetRotation();   //repasse la rotation ï¿½ 0 pour les fantomes dans les paniers
 
         GameObject[] sysAngle = GameObject.FindGameObjectsWithTag("systeme");
         for(int i = 0; i < sysAngle.Length; i++)
@@ -92,6 +92,12 @@ public class bonusScript : MonoBehaviour
         }
 
         Destroy(this.gameObject);
+
+        GameObject[]  objs = GameObject.FindGameObjectsWithTag("fantomeMechant");
+        foreach (var obj in objs)
+        {
+            obj.GetComponent<IAMechant>().isUpdateEnable = true;
+        }
 
     }
 

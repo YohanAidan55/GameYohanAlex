@@ -139,13 +139,14 @@ public class touchFantome : MonoBehaviour
             {
                 if (fantom.GetComponent<fantomeScript>().isError)
                 {
-                    LunchLose();
+                    StartCoroutine(LunchLose());
                 }
 
                 if (!fantom.GetComponent<fantomeScript>().move)
                 {
                     fantom.GetComponent<fantomeScript>().transformFantome();
                     fantom = null;
+                    StartCoroutine(LunchLose());
                 }
             }
 
@@ -188,10 +189,9 @@ public class touchFantome : MonoBehaviour
             mechantTouch = true;
         }
     }
-
-
-    public void LunchLose()
+    public IEnumerator LunchLose()
     {
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("menuLose");
     }
 }

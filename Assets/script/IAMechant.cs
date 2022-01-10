@@ -31,10 +31,13 @@ public class IAMechant : MonoBehaviour
         if(isUpdateEnable)
         { 
         endMarkerObject = FindSecurity(panier.GetComponent<PanContent>().Sys);
-        endMarker = endMarkerObject.GetComponent<Transform>();
-        final = endMarker.position;
-        final.z = 0;
-        agent.SetDestination(final);
+            if (endMarkerObject != null)
+            {
+                endMarker = endMarkerObject.GetComponent<Transform>();
+                final = endMarker.position;
+                final.z = 0;
+                agent.SetDestination(final);
+            }
         }
     }
     
