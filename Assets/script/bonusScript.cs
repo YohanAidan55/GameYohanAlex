@@ -82,6 +82,15 @@ public class bonusScript : MonoBehaviour
         GameObject.Find("PanierBleu").transform.rotation = y;
         GameObject.Find("PanierBleu").GetComponent<PanContent>().resetRotation();   //repasse la rotation à 0 pour les fantomes dans les paniers
 
+        GameObject[] sysAngle = GameObject.FindGameObjectsWithTag("systeme");
+        for(int i = 0; i < sysAngle.Length; i++)
+        {
+            if (sysAngle[i].GetComponent<DefensePanier>().angle)
+            {
+                sysAngle[i].transform.localPosition = new Vector2(sysAngle[i].transform.localPosition.x, -sysAngle[i].transform.localPosition.y);
+            }
+        }
+
         Destroy(this.gameObject);
 
     }
