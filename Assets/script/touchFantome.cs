@@ -80,7 +80,7 @@ public class touchFantome : MonoBehaviour
                     {
                         if (fantom.GetComponent<fantomeScript>().isError)
                         {
-                            LunchLose();
+                            StartCoroutine(LunchLose());
                         }
 
                         if (!fantom.GetComponent<fantomeScript>().move)
@@ -146,7 +146,6 @@ public class touchFantome : MonoBehaviour
                 {
                     fantom.GetComponent<fantomeScript>().transformFantome();
                     fantom = null;
-                    StartCoroutine(LunchLose());
                 }
             }
 

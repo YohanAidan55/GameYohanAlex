@@ -35,20 +35,20 @@ public class PanContent : MonoBehaviour
         {
             if(destruct(Sys) == 1)
             {
-                StartCoroutine(CoroutineLose());
+                CoroutineLose();
             }
 
             isDestroy = false;
         }
     }
     
-    IEnumerator CoroutineLose()
+    public void CoroutineLose()
     {
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1);
         DestroyFantome(Pan);
-        Destroy(gameObject);
-        SceneManager.LoadScene("menuLose");
-        //GameObject.Find("touch").GetComponent<touchFantome>().LunchLose();
+        gameObject.GetComponent<SpriteRenderer>().sprite = null;
+        //SceneManager.LoadScene("menuLose");
+        StartCoroutine(GameObject.Find("touch").GetComponent<touchFantome>().LunchLose());
     }
 
     int destruct(GameObject[] tab)
