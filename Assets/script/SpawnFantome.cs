@@ -34,7 +34,7 @@ public class SpawnFantome : MonoBehaviour
 
     public int speedVariation = 0; //agmentation ou diminution de la vitesse si bonus/malus 
     int appMin = 60;
-    public int appVariation = 0;
+    public int appVariation;
 
     int score;
     int valScore;  //combien de point par fantome ajouté
@@ -43,7 +43,7 @@ public class SpawnFantome : MonoBehaviour
     void Start()
     {
         fantArray = new GameObject[] { fantR, fantB, fantJ, fantV };
-
+        appVariation = 1;
 
         valApp = GetValFromMatrice(score, matriceApparition);   //première ValApp
         valScore = 1;
@@ -79,15 +79,11 @@ public class SpawnFantome : MonoBehaviour
 
             valApp = GetValFromMatrice(score, matriceApparition);
         }
-
-        if(score > 10)
-        {
-            nbApp = score / 10 + 1 + appVariation;
-        }
-        
+        nbApp = (score / 10 * appVariation) +1;
 
     }
 
+    
     private int GetValFromMatrice(int score, int[,] mat)
     {
 

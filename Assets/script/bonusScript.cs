@@ -145,7 +145,7 @@ public class bonusScript : MonoBehaviour
 
         spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() / 2);
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(50);
-        spawn.GetComponent<SpawnFantome>().appVariation = 0;
+        spawn.GetComponent<SpawnFantome>().appVariation = 1;
         Destroy(this.gameObject);
 
     }

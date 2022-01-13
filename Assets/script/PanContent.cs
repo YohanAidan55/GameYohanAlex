@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PanContent : MonoBehaviour
 {
@@ -46,7 +47,8 @@ public class PanContent : MonoBehaviour
         yield return new WaitForSeconds(1);
         DestroyFantome(Pan);
         Destroy(gameObject);
-        GameObject.Find("touch").GetComponent<touchFantome>().LunchLose();
+        SceneManager.LoadScene("menuLose");
+        //GameObject.Find("touch").GetComponent<touchFantome>().LunchLose();
     }
 
     int destruct(GameObject[] tab)
