@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class touchFantome : MonoBehaviour
 {
+    int modeDeJeu;
 
     Vector2 iniPos;
     Vector2 startPos;
@@ -22,6 +23,8 @@ public class touchFantome : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        modeDeJeu = PlayerPrefs.GetInt("mode");
+
         iniPos = transform.position;
         nbCartouche = 0; //commence la partie avec 0 cartouche antiFantome
     }
@@ -85,8 +88,15 @@ public class touchFantome : MonoBehaviour
 
                         if (!fantom.GetComponent<fantomeScript>().move)
                         {
-                            fantom.GetComponent<fantomeScript>().transformFantome();
-                            fantom = null;
+                            if (modeDeJeu == 1)
+                            {
+                                StartCoroutine(LunchLose());
+                            }
+                            else
+                            {
+                                fantom.GetComponent<fantomeScript>().transformFantome();
+                                fantom = null;
+                            }
                         }
                     }
 
@@ -144,8 +154,15 @@ public class touchFantome : MonoBehaviour
 
                 if (!fantom.GetComponent<fantomeScript>().move)
                 {
-                    fantom.GetComponent<fantomeScript>().transformFantome();
-                    fantom = null;
+                    if (modeDeJeu == 1)
+                    {
+                        StartCoroutine(LunchLose());
+                    }
+                    else
+                    {
+                        fantom.GetComponent<fantomeScript>().transformFantome();
+                        fantom = null;
+                    }                   
                 }
             }
 

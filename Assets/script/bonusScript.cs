@@ -53,6 +53,9 @@ public class bonusScript : MonoBehaviour
             else if (n == 4)
             {
                 StartCoroutine(Combo());
+            }else if(n == 5)
+            {
+                Bombe();
             }
         }
 
@@ -146,6 +149,19 @@ public class bonusScript : MonoBehaviour
         spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() / 2);
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(50);
         spawn.GetComponent<SpawnFantome>().appVariation = 1;
+        Destroy(this.gameObject);
+
+    }
+
+
+    void Bombe()
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("fantomeMechant");
+        foreach (var obj in objs)
+        {
+            Destroy(obj);
+        }
+
         Destroy(this.gameObject);
 
     }

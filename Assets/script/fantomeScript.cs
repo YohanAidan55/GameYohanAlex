@@ -22,9 +22,13 @@ using UnityEngine;
 
     int valScore;
 
-    void Update()
+    void Start()
     {
-        modeDeJeu = PlayerPrefs.GetInt("mode");      
+        modeDeJeu = PlayerPrefs.GetInt("mode");
+    }
+
+    void Update()
+    {        
 
         if (move == false)
         {
@@ -45,38 +49,7 @@ using UnityEngine;
     }
 
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "panier"){
 
-            if (other.gameObject.GetComponent<PanContent>().color == color)
-            {
-                GameObject.Find("touch").GetComponent<Score>().sc += valScore;
-                List<GameObject> listFant = other.gameObject.GetComponent<PanContent>().Pan;
-                if (ajout == false) {    //accede seulement à la première case NonReorderableAttribute rempli
-                    listFant.Add(gameObject);      //ajoute le fantome au tableau du panier
-                        gameObject.transform.parent = other.gameObject.transform;    //définit le panier du fantome comme étant son parent
-                        ajout = true;
-                }
-                isError = false;
-            }
-
-        }
-
-        if(other.gameObject.tag == "Respawn")
-        {
-            isEnter = true;
-            if (modeDeJeu == 2)
-            {
-               // transformFantome();
-            }
-            else if (modeDeJeu == 1)
-            {
-                StartCoroutine(GameObject.Find("touch").GetComponent<touchFantome>().LunchLose());
-            }
-        }
-
-    }
 
     void OnTriggerExit2D(Collider2D other)
     {
