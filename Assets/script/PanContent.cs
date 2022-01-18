@@ -48,7 +48,7 @@ public class PanContent : MonoBehaviour
         DestroyFantome(Pan);
         gameObject.GetComponent<SpriteRenderer>().sprite = null;
         //SceneManager.LoadScene("menuLose");
-        StartCoroutine(GameObject.Find("touch").GetComponent<touchFantome>().LunchLose());
+        StartCoroutine(GameObject.Find("player").GetComponent<touchFantome>().LunchLose());
     }
 
     int destruct(GameObject[] tab)

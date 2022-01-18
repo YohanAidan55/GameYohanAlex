@@ -7,77 +7,67 @@ public class touchFantome : MonoBehaviour
 {
     int modeDeJeu;
 
+    public int status = 0;     //0 = nul --- 1 = begin --- 2 = move --- 3 =  end
+
     Vector2 iniPos;
     Vector2 startPos;
     Vector2 currentPos;
 
     bool clicFantome = false; //verif si clic sur un fantome
     public bool release = true; // verif si lache
-    public int nb;
     GameObject fantom;
 
-    public int nbCartouche; //nombre de cartouche antiFantome du joueur
     bool exploded = false;
     bool mechantTouch = false;
+
+    public bool useMouse;  //est à true pour l'objet touch uniquement
 
     // Start is called before the first frame update
     void Start()
     {
         modeDeJeu = PlayerPrefs.GetInt("mode");
 
-        iniPos = transform.position;
-        nbCartouche = 0; //commence la partie avec 0 cartouche antiFantome
+        iniPos = new Vector2(-15, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
-        if (Input.touchCount > nb)           //tactile
-        {
-            Touch touch = Input.GetTouch(nb);
-            switch (touch.phase)
+            switch (status)         // gerer depuis touch => gestion touch
             {
+                case 1:
 
-                case TouchPhase.Began: //le touch prend la valeur de l'endroit où l'on clique
-
-                    var ray = Camera.main.ScreenPointToRay(touch.position); //récupère la position du clic
-                    //startPos = Camera.main.ScreenToWorldPoint(touch.position);
-                    startPos = ray.origin + ray.direction;
-
-                    this.transform.position = startPos;
-
-                  //  this.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
-
-                    if (clicFantome == true)
+                    if ((clicFantome == true)&& (fantom != null))
                     {
-                        fantom.transform.position = startPos;
+                        fantom.transform.position = this.transform.position;
                     }
 
                     release = false;
 
                     break;
 
-                case TouchPhase.Moved: //le touch suit le doigth
+                case 2:
 
-                    var ray2 = Camera.main.ScreenPointToRay(touch.position);
-                    currentPos = ray2.origin + ray2.direction;
-
-                    this.transform.position = currentPos;
-
-                    //this.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
-
-                    if (clicFantome == true)
+                    if ((clicFantome == true)&&(fantom != null))
                     {
-                        fantom.transform.position = currentPos;
+                        fantom.transform.position = this.transform.position;
                     }
-
-                    exploded = true;
+                Debug.Log("ok");
+                    exploded = true;    //si l'objet est en mouvement, alors la cartouche ne fonctionne pas 
 
                     break;
 
-                case TouchPhase.Ended: //le touch retourne à son endroit inititial
+                case 3:
+
+                    if ((clicFantome == true) && (fantom != null))
+                    {
+                        fantom.transform.position = this.transform.position;
+                    }
+
+                    break;
+
+                case 4:
 
                     if (clicFantome)
                     {
@@ -106,78 +96,83 @@ public class touchFantome : MonoBehaviour
                     fantom = null;
                     exploded = false;
 
+                    status = 0;
+
                     break;
             }
-        }
 
-        if (Input.GetMouseButtonDown(0))    //souris
-        {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            startPos = ray.origin + ray.direction;
-            transform.position = startPos;
-
-            if ((clicFantome == true)&&(fantom != null))
-            {
-                fantom.transform.position = startPos;
-            } 
-            release = false;
-            
-        }
-
-        if (release == false)
-        {
-            var ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
-            currentPos = ray2.origin + ray2.direction;
-            transform.position = currentPos;
-
-            if ((clicFantome == true)&&(fantom != null))
-            {
-                fantom.transform.position = currentPos;
-            }
-
-            if ((Input.GetAxis("Mouse X") != 0) || (Input.GetAxis("Mouse Y") != 0))     //si la souris bouge, alors les cartouches anti-fatnomes ne fonctionnent pas
-            {
-                exploded = true;
-            }
-        }
 
         
-
-        if (Input.GetMouseButtonUp(0))  //le touch retourne à son endroit inititial
-        {
-            if (clicFantome)
+            if (Input.GetMouseButtonDown(0) && useMouse)    //souris
             {
-                if (fantom.GetComponent<fantomeScript>().isError)
-                {
-                    StartCoroutine(LunchLose());
-                }
 
-                if (!fantom.GetComponent<fantomeScript>().move)
+                var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                startPos = ray.origin + ray.direction;
+                transform.position = startPos;
+
+                if ((clicFantome == true)&&(fantom != null))
                 {
-                    if (modeDeJeu == 1)
+                    fantom.transform.position = startPos;
+                } 
+                release = false;
+
+            }
+
+            if (Input.GetMouseButtonUp(0) && useMouse)  //le touch retourne à son endroit inititial
+            {
+                if (clicFantome)
+                {
+                    if (fantom.GetComponent<fantomeScript>().isError)
                     {
                         StartCoroutine(LunchLose());
                     }
-                    else
+
+                    if (!fantom.GetComponent<fantomeScript>().move)
                     {
-                        fantom.GetComponent<fantomeScript>().transformFantome();
-                        fantom = null;
-                    }                   
+                        if (modeDeJeu == 1)
+                        {
+                            StartCoroutine(LunchLose());
+                        }
+                        else
+                        {
+                            fantom.GetComponent<fantomeScript>().transformFantome();
+                            fantom = null;
+                        }                   
+                    }
+                }
+
+                transform.position = iniPos;
+                clicFantome = false;
+                release = true;
+                fantom = null;
+                exploded = false;
+            }
+
+
+            if ((release == false) && useMouse)
+            {
+                var ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
+                currentPos = ray2.origin + ray2.direction;
+                transform.position = currentPos;
+
+                if ((clicFantome == true) && (fantom != null))
+                {
+                    fantom.transform.position = currentPos;
+                }
+
+                if ((Input.GetAxis("Mouse X") != 0) || (Input.GetAxis("Mouse Y") != 0))     //si la souris bouge, alors les cartouches anti-fatnomes ne fonctionnent pas
+                {
+                    exploded = true;
                 }
             }
 
-            transform.position = iniPos;
-            clicFantome = false;
-            release = true;
-            fantom = null;
-            exploded = false;
-        }
 
-        if (mechantTouch)   //si le joueur a utilisé une cartourhce
-        {
-            nbCartouche--;
-            mechantTouch = false;
-        }
+
+            if (mechantTouch)   //si le joueur a utilisé une cartourhce
+            {
+                    GameObject.Find("player").GetComponent<gestionTouch>().nbCartouche--;
+                    mechantTouch = false;
+            }
 
     }
 
@@ -190,21 +185,21 @@ public class touchFantome : MonoBehaviour
             fantom.GetComponent<fantomeScript>().isCatch = true;
         }
 
-        if ((other.gameObject.tag == "bonus") && !exploded)
+        if ((other.gameObject.tag == "bonus") && !exploded)         //si le joueur touche un bonus non utilisé
         {
             other.gameObject.GetComponent<bonusScript>().BonusSelected();
         }
     }
 
-
     void OnTriggerEnter2D(Collider2D other)
     {
-       if ((other.gameObject.tag == "fantomeMechant") && (nbCartouche > 0) && !release && !exploded)
+       if ((other.gameObject.tag == "fantomeMechant") && (GameObject.Find("player").GetComponent<gestionTouch>().nbCartouche > 0) && !release && !exploded)        //si le joueur veut utiliser une cartouche
        {
             Destroy(other.gameObject);
             mechantTouch = true;
         }
     }
+
     public IEnumerator LunchLose()
     {
         yield return new WaitForSeconds(1);

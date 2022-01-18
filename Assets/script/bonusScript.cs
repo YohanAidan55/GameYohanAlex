@@ -14,7 +14,7 @@ public class bonusScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawn = GameObject.Find("touch");
+        spawn = GameObject.Find("player");
     }
 
 
@@ -132,7 +132,7 @@ public class bonusScript : MonoBehaviour
 
     void AddCartouche()
     {
-        spawn.GetComponent<touchFantome>().nbCartouche++;
+        spawn.GetComponent<gestionTouch>().nbCartouche++;
         Destroy(this.gameObject);
     }
 

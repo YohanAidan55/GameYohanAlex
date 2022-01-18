@@ -39,7 +39,7 @@ using UnityEngine;
             Move();
         }
 
-        valScore = GameObject.Find("touch").GetComponent<SpawnFantome>().getValScore();
+        valScore = GameObject.Find("player").GetComponent<SpawnFantome>().getValScore();
 
         if (isEnter)
         {
@@ -49,6 +49,32 @@ using UnityEngine;
     }
 
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "panier")
+        {
+
+            if (other.gameObject.GetComponent<PanContent>().color == color)
+            {
+                GameObject.Find("player").GetComponent<Score>().sc += valScore;
+                List<GameObject> listFant = other.gameObject.GetComponent<PanContent>().Pan;
+                if (ajout == false)
+                {    //accede seulement à la première case NonReorderableAttribute rempli
+                    listFant.Add(gameObject);      //ajoute le fantome au tableau du panier
+                    gameObject.transform.parent = other.gameObject.transform;    //définit le panier du fantome comme étant son parent
+                    ajout = true;
+                }
+                isError = false;
+            }
+
+        }
+
+        if (other.gameObject.tag == "Respawn")
+        {
+            isEnter = true;
+        }
+
+    }
 
 
     void OnTriggerExit2D(Collider2D other)
@@ -56,7 +82,7 @@ using UnityEngine;
         if (other.gameObject.tag == "panier"){
               if (other.gameObject.GetComponent<PanContent>().color == color)
               {
-                GameObject.Find("touch").GetComponent<Score>().sc -= valScore;
+                GameObject.Find("player").GetComponent<Score>().sc -= valScore;
                 move = false;
               }
               else { isError = false; }
