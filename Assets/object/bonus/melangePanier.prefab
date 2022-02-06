@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   n: 0
+  proba: 70
 --- !u!50 &2656183182678600155
 Rigidbody2D:
   serializedVersion: 4
