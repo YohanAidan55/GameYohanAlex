@@ -80,7 +80,7 @@ using UnityEngine;
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "panier"){
-              if (other.gameObject.GetComponent<PanContent>().color == color)
+              if ((other.gameObject.GetComponent<PanContent>().color == color) && isCatch)
               {
                 GameObject.Find("player").GetComponent<Score>().sc -= valScore;
                 move = false;

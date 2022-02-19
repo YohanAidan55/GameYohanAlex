@@ -84,15 +84,17 @@ public class touchFantome : MonoBehaviour
                             }
                             else
                             {
-                                fantom.GetComponent<fantomeScript>().transformFantome();
+                            fantom.GetComponent<fantomeScript>().transformFantome();
                                 fantom = null;
                             }
                         }
+
+                        fantom.GetComponent<fantomeScript>().isCatch = false;
                     }
 
                     transform.position = iniPos;
                     clicFantome = false;
-                    release = true;
+                    release = true;                   
                     fantom = null;
                     exploded = false;
 
@@ -139,11 +141,13 @@ public class touchFantome : MonoBehaviour
                             fantom = null;
                         }                   
                     }
+
+                    fantom.GetComponent<fantomeScript>().isCatch = false;
                 }
 
                 transform.position = iniPos;
                 clicFantome = false;
-                release = true;
+                release = true;               
                 fantom = null;
                 exploded = false;
             }

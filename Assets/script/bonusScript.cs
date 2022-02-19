@@ -141,14 +141,14 @@ public class bonusScript : MonoBehaviour
     IEnumerator Combo()
     {
         spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() * 2);
-        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-80);
         spawn.GetComponent<SpawnFantome>().appVariation = 1;
 
         yield return new WaitForSeconds(10f);
         Debug.Log("timeEnd");
 
         spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() / 2);
-        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(50);
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(80);
         spawn.GetComponent<SpawnFantome>().appVariation = 3;
         Destroy(this.gameObject);
 

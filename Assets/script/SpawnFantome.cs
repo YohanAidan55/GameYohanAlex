@@ -22,7 +22,6 @@ public class SpawnFantome : MonoBehaviour
     int proba;  //probabilité d'avoir un fantome en plus en fonction du score
 
     int x, y;  //variable pour récupérer une valeur dans la matrice
-    bool ok = false;
 
     public int[,] matriceApparition =       //matrice de taux d'apparition
     {
