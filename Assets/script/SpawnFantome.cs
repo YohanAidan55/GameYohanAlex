@@ -23,17 +23,18 @@ public class SpawnFantome : MonoBehaviour
 
     int x, y;  //variable pour récupérer une valeur dans la matrice
 
+
     public int[,] matriceApparition =       //matrice de taux d'apparition
     {
-        {200, 190, 180, 170, 160},
-        {180, 170, 160, 150, 140},
-        {170, 160, 150, 140, 130},
         {150, 140, 130, 120, 110},
         {130, 120, 110, 100, 90},
         {110, 100, 90, 80, 70},
-        {90, 80, 70, 60, 60},
-        {70, 60, 60, 60, 60},
-        {60, 60, 60, 60, 60},
+        {90, 80, 70, 60, 50},
+        {70, 60, 50, 50, 50},
+        {50, 50, 50, 50, 50},
+      //  {90, 80, 70, 60, 60},
+      //  {70, 60, 60, 60, 60},
+      //  {60, 60, 60, 60, 60},
     };
 
     int n;
@@ -41,7 +42,7 @@ public class SpawnFantome : MonoBehaviour
     int valAppBonus = 0;  // si un bonus doit apparaitre, temps en ms après le dernier fantome
 
     public int speedVariation = 0; //agmentation ou diminution de la vitesse si bonus/malus 
-    int appMin = 60;
+    int appMin = 50;
     public int appVariation;
     public int scoreMax;
 
@@ -59,7 +60,7 @@ public class SpawnFantome : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         score = gameObject.GetComponent<Score>().sc;    //récupère le score
 
@@ -68,7 +69,7 @@ public class SpawnFantome : MonoBehaviour
 
         if ((n >= valApp + speedVariation)&&(n >= appMin))   //speed variation : modifie la vitesse d'apparition des fantomes
         {
-            tauxAppBonus = 5;
+            tauxAppBonus = 4;
             /* if(score >= 10)
              {
                  tauxAppBonus = score / 10 * 2;
@@ -117,9 +118,9 @@ public class SpawnFantome : MonoBehaviour
         {
             y = score / 10;
         }
-        if (x > 8)
+        if (x > 5)
         {
-            x = 8;
+            x = 5;
             y = 4;
         }
 

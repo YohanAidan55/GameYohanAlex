@@ -76,7 +76,7 @@ public class touchFantome : MonoBehaviour
                             StartCoroutine(LunchLose());
                         }
 
-                        if (!fantom.GetComponent<fantomeScript>().move)
+                        if ((!fantom.GetComponent<fantomeScript>().move) && ((fantom.transform.position.x < -1) || (fantom.transform.position.x > 1)))      //si le fantome est laché hors du tapis
                         {
                             if (modeDeJeu == 1)
                             {
@@ -129,7 +129,7 @@ public class touchFantome : MonoBehaviour
                         StartCoroutine(LunchLose());
                     }
 
-                    if (!fantom.GetComponent<fantomeScript>().move)
+                    if ((!fantom.GetComponent<fantomeScript>().move) && ((fantom.transform.position.x < -1) || (fantom.transform.position.x > 1)))
                     {
                         if (modeDeJeu == 1)
                         {

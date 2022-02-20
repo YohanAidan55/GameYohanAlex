@@ -87,7 +87,7 @@ using UnityEngine;
               }
               else { isError = false; }
         }
-        if ((other.gameObject.tag == "tapis") && (move == false) && !isCatch)
+        if ((other.gameObject.tag == "tapis") && !move && !isCatch)
         {
             if (modeDeJeu == 2)
             {
@@ -95,7 +95,7 @@ using UnityEngine;
             }
             else if (modeDeJeu == 1)
             {
-                StartCoroutine(GameObject.Find("touch").GetComponent<touchFantome>().LunchLose());
+                StartCoroutine(GameObject.Find("player").GetComponent<touchFantome>().LunchLose());
             }
         }
     }

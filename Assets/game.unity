@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790c98865afb09a45b40c5c8210b1765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPos: {x: 0.3, y: 5.5, z: 0}
+  spawnPos: {x: 0, y: 5.5, z: 0}
   fantR: {fileID: 1582265959770516, guid: 5312566165837fe4b8f6b53680261975, type: 3}
   fantB: {fileID: 8777497671097122397, guid: aa97ebcf3fce0314a8a2b6b19b6dc7e5, type: 3}
   fantJ: {fileID: 1852054023168640, guid: 07e229844f4dfe748b0959f34e09067c, type: 3}
@@ -3040,9 +3040,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07390995, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.26
+  m_Radius: 0.15
 --- !u!1 &1773488975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4043,9 +4043,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06736107, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.26
+  m_Radius: 0.15
 --- !u!1 &2115938250
 GameObject:
   m_ObjectHideFlags: 0
