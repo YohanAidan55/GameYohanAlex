@@ -22,6 +22,8 @@ using UnityEngine;
 
     int valScore;
 
+    public int speed;
+
     void Start()
     {
         modeDeJeu = PlayerPrefs.GetInt("mode");
@@ -32,7 +34,7 @@ using UnityEngine;
 
         if (move == false)
         {
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -3) * Time.timeScale;
+            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed) * Time.timeScale;
         }
         else
         {

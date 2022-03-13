@@ -10,6 +10,8 @@ public class bonusScript : MonoBehaviour
 
     GameObject spawn;
 
+    public int speed;
+
     bool isEffected = false; //indique si le bonus a �t� utilis� 
 
     // Start is called before the first frame update
@@ -22,7 +24,7 @@ public class bonusScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -3) * Time.timeScale;
+        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed) * Time.timeScale;
         if((this.transform.position.y <= -10)&&(!isEffected))
         {
             Destroy(this.gameObject);

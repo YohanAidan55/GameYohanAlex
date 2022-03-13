@@ -13,7 +13,7 @@ public class touchFantome : MonoBehaviour
     Vector2 startPos;
     Vector2 currentPos;
 
-    bool clicFantome = false; //verif si clic sur un fantome
+    public bool clicFantome = false; //verif si clic sur un fantome
     public bool release = true; // verif si lache
     GameObject fantom;
 
@@ -28,6 +28,8 @@ public class touchFantome : MonoBehaviour
         modeDeJeu = PlayerPrefs.GetInt("mode");
 
         iniPos = new Vector2(-15, 0);
+
+        status = -1; //si le status ne change pas alors on est pas en mode tactile
     }
 
     // Update is called once per frame
@@ -105,7 +107,7 @@ public class touchFantome : MonoBehaviour
 
 
         
-            if (Input.GetMouseButtonDown(0) && useMouse)    //souris
+            if (Input.GetMouseButtonDown(0) && useMouse && status == -1)    //souris
             {
 
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -120,7 +122,7 @@ public class touchFantome : MonoBehaviour
 
             }
 
-            if (Input.GetMouseButtonUp(0) && useMouse)  //le touch retourne à son endroit inititial
+            if (Input.GetMouseButtonUp(0) && useMouse && status == -1)  //le touch retourne à son endroit inititial
             {
                 if (clicFantome)
                 {
