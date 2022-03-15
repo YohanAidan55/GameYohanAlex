@@ -22,6 +22,8 @@ using UnityEngine;
 
     int valScore;
 
+    public int speed;
+
     void Start()
     {
         modeDeJeu = PlayerPrefs.GetInt("mode");
@@ -32,7 +34,7 @@ using UnityEngine;
 
         if (move == false)
         {
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -3) * Time.timeScale;
+            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed) * Time.timeScale;
         }
         else
         {
@@ -80,14 +82,14 @@ using UnityEngine;
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "panier"){
-              if (other.gameObject.GetComponent<PanContent>().color == color)
+              if ((other.gameObject.GetComponent<PanContent>().color == color) && isCatch)
               {
                 GameObject.Find("player").GetComponent<Score>().sc -= valScore;
                 move = false;
               }
               else { isError = false; }
         }
-        if ((other.gameObject.tag == "tapis") && (move == false) && !isCatch)
+        if ((other.gameObject.tag == "tapis") && !move && !isCatch)
         {
             if (modeDeJeu == 2)
             {
@@ -95,7 +97,7 @@ using UnityEngine;
             }
             else if (modeDeJeu == 1)
             {
-                StartCoroutine(GameObject.Find("touch").GetComponent<touchFantome>().LunchLose());
+                StartCoroutine(GameObject.Find("player").GetComponent<touchFantome>().LunchLose());
             }
         }
     }

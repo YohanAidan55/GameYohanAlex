@@ -23,6 +23,7 @@ public class PanContent : MonoBehaviour
     {
         if(Pan.Count == 10)   //Si le tableau est rempli / il y a 10 fantomes dans le panier
         {
+            Pan[0].GetComponent<fantomeScript>().enabled = false;
             Destroy(Pan[0]);
             for(int i = 0; i < Pan.Count - 1; i++)
             {

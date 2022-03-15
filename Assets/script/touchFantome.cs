@@ -13,7 +13,7 @@ public class touchFantome : MonoBehaviour
     Vector2 startPos;
     Vector2 currentPos;
 
-    bool clicFantome = false; //verif si clic sur un fantome
+    public bool clicFantome = false; //verif si clic sur un fantome
     public bool release = true; // verif si lache
     GameObject fantom;
 
@@ -28,6 +28,8 @@ public class touchFantome : MonoBehaviour
         modeDeJeu = PlayerPrefs.GetInt("mode");
 
         iniPos = new Vector2(-15, 0);
+
+        status = -1; //si le status ne change pas alors on est pas en mode tactile
     }
 
     // Update is called once per frame
@@ -76,7 +78,7 @@ public class touchFantome : MonoBehaviour
                             StartCoroutine(LunchLose());
                         }
 
-                        if (!fantom.GetComponent<fantomeScript>().move)
+                        if ((!fantom.GetComponent<fantomeScript>().move) && ((fantom.transform.position.x < -1) || (fantom.transform.position.x > 1)))      //si le fantome est laché hors du tapis
                         {
                             if (modeDeJeu == 1)
                             {
@@ -84,15 +86,17 @@ public class touchFantome : MonoBehaviour
                             }
                             else
                             {
-                                fantom.GetComponent<fantomeScript>().transformFantome();
+                            fantom.GetComponent<fantomeScript>().transformFantome();
                                 fantom = null;
                             }
                         }
+
+                        fantom.GetComponent<fantomeScript>().isCatch = false;
                     }
 
                     transform.position = iniPos;
                     clicFantome = false;
-                    release = true;
+                    release = true;                   
                     fantom = null;
                     exploded = false;
 
@@ -103,7 +107,7 @@ public class touchFantome : MonoBehaviour
 
 
         
-            if (Input.GetMouseButtonDown(0) && useMouse)    //souris
+            if (Input.GetMouseButtonDown(0) && useMouse && status == -1)    //souris
             {
 
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -118,7 +122,7 @@ public class touchFantome : MonoBehaviour
 
             }
 
-            if (Input.GetMouseButtonUp(0) && useMouse)  //le touch retourne à son endroit inititial
+            if (Input.GetMouseButtonUp(0) && useMouse && status == -1)  //le touch retourne à son endroit inititial
             {
                 if (clicFantome)
                 {
@@ -127,7 +131,7 @@ public class touchFantome : MonoBehaviour
                         StartCoroutine(LunchLose());
                     }
 
-                    if (!fantom.GetComponent<fantomeScript>().move)
+                    if ((!fantom.GetComponent<fantomeScript>().move) && ((fantom.transform.position.x < -1) || (fantom.transform.position.x > 1)))
                     {
                         if (modeDeJeu == 1)
                         {
@@ -139,11 +143,13 @@ public class touchFantome : MonoBehaviour
                             fantom = null;
                         }                   
                     }
+
+                    fantom.GetComponent<fantomeScript>().isCatch = false;
                 }
 
                 transform.position = iniPos;
                 clicFantome = false;
-                release = true;
+                release = true;               
                 fantom = null;
                 exploded = false;
             }

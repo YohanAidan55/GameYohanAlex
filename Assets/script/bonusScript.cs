@@ -6,8 +6,11 @@ public class bonusScript : MonoBehaviour
 {
 
     public int n;   //type du bonus indiquant la fonction � utiliser
+    public int proba;
 
     GameObject spawn;
+
+    public int speed;
 
     bool isEffected = false; //indique si le bonus a �t� utilis� 
 
@@ -21,7 +24,7 @@ public class bonusScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -3) * Time.timeScale;
+        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed) * Time.timeScale;
         if((this.transform.position.y <= -10)&&(!isEffected))
         {
             Destroy(this.gameObject);
@@ -140,15 +143,15 @@ public class bonusScript : MonoBehaviour
     IEnumerator Combo()
     {
         spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() * 2);
-        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);
-        spawn.GetComponent<SpawnFantome>().appVariation = 0;
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-80);
+        spawn.GetComponent<SpawnFantome>().appVariation = 1;
 
         yield return new WaitForSeconds(10f);
         Debug.Log("timeEnd");
 
         spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() / 2);
-        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(50);
-        spawn.GetComponent<SpawnFantome>().appVariation = 1;
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(80);
+        spawn.GetComponent<SpawnFantome>().appVariation = 3;
         Destroy(this.gameObject);
 
     }
