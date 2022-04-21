@@ -114,7 +114,217 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: AnimationFlammeBleu1_0
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 1094
+        width: 313
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adfc83a847b0e4b2a95a88495bd92b80
+      internalID: 1228994961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationFlammeBleu1_1
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 1039
+        width: 304
+        height: 299
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374ac7470d22a45108748f77cc77a89c
+      internalID: -462243245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationFlammeBleu1_2
+      rect:
+        serializedVersion: 2
+        x: 1466
+        y: 1037
+        width: 300
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd8b19511d3ec408fab3a6d90ea5ad95
+      internalID: 689531985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationFlammeBleu1_3
+      rect:
+        serializedVersion: 2
+        x: 2155
+        y: 1039
+        width: 336
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e12b9bd052d94f80a75fc7a00029fd2
+      internalID: 630321773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationFlammeBleu1_4
+      rect:
+        serializedVersion: 2
+        x: 2722
+        y: 1059
+        width: 336
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 651f0961253d847ae846741199848a95
+      internalID: 215802483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationFlammeBleu1_7
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 276
+        width: 301
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb5072c88f7748f2a83c0d239a809b2
+      internalID: 1870611708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationFlammeBleu1_8
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 274
+        width: 350
+        height: 280
+      alignment: 9
+      pivot: {x: 0.41065538, y: 0.4396926}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e3557ca7ca2848a2a4eb1be99602839
+      internalID: -959783665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationFlammeBleu1_9
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 251
+        width: 307
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ffbca922e09b44cabecde8234971c3d
+      internalID: 77435852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationFlammeBleu1_10
+      rect:
+        serializedVersion: 2
+        x: 2182
+        y: 334
+        width: 265
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a7d0c6e871a4c86a2faa4756f5664e
+      internalID: 1357537292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimationFlammeBleu1_11
+      rect:
+        serializedVersion: 2
+        x: 2741
+        y: 352
+        width: 323
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4132020e2abd04e23a0dd9d968d346ce
+      internalID: 1952137839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -125,7 +335,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AnimationFlammeBleu1_8: -959783665
+      AnimationFlammeBleu1_4: 215802483
+      AnimationFlammeBleu1_0: 1228994961
+      AnimationFlammeBleu1_1: -462243245
+      AnimationFlammeBleu1_7: 1870611708
+      AnimationFlammeBleu1_15: -1884824881
+      AnimationFlammeBleu1_6: 300918485
+      AnimationFlammeBleu1_12: 412992814
+      AnimationFlammeBleu1_3: 630321773
+      AnimationFlammeBleu1_5: -505539262
+      AnimationFlammeBleu1_10: 1357537292
+      AnimationFlammeBleu1_13: 124511221
+      AnimationFlammeBleu1_2: 689531985
+      AnimationFlammeBleu1_9: 77435852
+      AnimationFlammeBleu1_11: 1952137839
+      AnimationFlammeBleu1_14: 1789857111
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
