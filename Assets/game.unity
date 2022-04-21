@@ -1869,6 +1869,7 @@ GameObject:
   - component: {fileID: 472471780}
   - component: {fileID: 472471786}
   - component: {fileID: 472471784}
+  - component: {fileID: 472471787}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -1992,6 +1993,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickChange: 0
   nbCartouche: 0
+--- !u!114 &472471787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472471779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f550598300c52419fbde23582bbcb133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnAnimation:
+  - {fileID: 5919873412985617216, guid: f557d75369912c143a73abcce871eea6, type: 3}
+  - {fileID: 1471241062847324139, guid: 510bfff59f7514feab0a5b81b31e821e, type: 3}
+  maxAnimation: 3
+  startTime: 2
+  maxRepeateTime: 3
 --- !u!1 &475118912
 GameObject:
   m_ObjectHideFlags: 0
