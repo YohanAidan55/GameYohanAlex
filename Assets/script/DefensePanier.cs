@@ -6,7 +6,7 @@ public class DefensePanier : MonoBehaviour
         public bool angle;
         private int n;
         public int nbrEnnemy = 0;
-
+        
         public Sprite spriteDetruit;
 
         private void Start()
@@ -20,7 +20,9 @@ public class DefensePanier : MonoBehaviour
              if (pointDeVie <= 0)
              {                       
                   this.gameObject.GetComponentInParent<PanContent>().isDestroy = true;
-                  this.gameObject.GetComponent<SpriteRenderer>().sprite = spriteDetruit;
+
+                  GameObject.Destroy(this.gameObject.transform.GetChild(0).gameObject);
+
              }
         }     
         
