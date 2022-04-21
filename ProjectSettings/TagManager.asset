@@ -13,6 +13,7 @@ TagManager:
   - fantomeMechant
   - listPanier
   - bonus
+  - flame
   layers:
   - Default
   - TransparentFX
