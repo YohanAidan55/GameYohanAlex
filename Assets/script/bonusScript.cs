@@ -16,6 +16,8 @@ public class bonusScript : MonoBehaviour
     bool isEffected = false; //indique si le bonus a �t� utilis� 
     
     private int timeRemaining = 11;
+    private bool scoreBlink = false;
+    private float timerScoreBlink;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,21 @@ public class bonusScript : MonoBehaviour
         if((this.transform.position.y <= -10)&&(!isEffected))
         {
             Destroy(this.gameObject);
+        }
+
+        if (scoreBlink)
+        {
+            timerScoreBlink += Time.deltaTime;
+            if(timerScoreBlink >= 0.3)
+            {
+                GameObject.Find("Score").GetComponent<Text>().fontSize = 60;
+            }
+            if(timerScoreBlink >= 0.6)
+            {
+                GameObject.Find("Score").GetComponent<Text>().fontSize = 65;
+                timerScoreBlink = 0;
+            }
+
         }
     }
 
@@ -147,10 +164,11 @@ public class bonusScript : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-
+    
     IEnumerator Combo()
     {
         spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() * 2);
+        scoreBlink = true;
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-80);
         spawn.GetComponent<SpawnFantome>().appVariation = 1;
         DisplayTime(timeRemaining);
@@ -158,6 +176,7 @@ public class bonusScript : MonoBehaviour
         Debug.Log("timeEnd");
 
         spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() / 2);
+        scoreBlink = false;
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(80);
         spawn.GetComponent<SpawnFantome>().appVariation = 3;
         Destroy(this.gameObject);
