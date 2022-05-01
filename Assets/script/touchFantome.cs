@@ -55,7 +55,6 @@ public class touchFantome : MonoBehaviour
                     {
                         fantom.transform.position = this.transform.position;
                     }
-                Debug.Log("ok");
                     exploded = true;    //si l'objet est en mouvement, alors la cartouche ne fonctionne pas 
 
                     break;

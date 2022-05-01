@@ -21,7 +21,7 @@ public class PanContent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Pan.Count == 10)   //Si le tableau est rempli / il y a 10 fantomes dans le panier
+        if(Pan.Count == 6)   //Si le tableau est rempli / il y a 6 fantomes dans le panier
         {
             Pan[0].GetComponent<fantomeScript>().enabled = false;
             Destroy(Pan[0]);
@@ -29,7 +29,7 @@ public class PanContent : MonoBehaviour
             {
                 Pan[i] = Pan[i + 1];
             }
-            Pan.Remove(Pan[9]);
+            Pan.Remove(Pan[5]);
         }
 
         if (isDestroy)

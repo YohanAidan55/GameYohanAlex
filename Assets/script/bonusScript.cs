@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class bonusScript : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class bonusScript : MonoBehaviour
     public int speed;
 
     bool isEffected = false; //indique si le bonus a �t� utilis� 
+    
+    private int timeRemaining = 11;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,10 @@ public class bonusScript : MonoBehaviour
         }
     }
 
+    void DisplayTime(float time)
+    {
+        GameObject.Find("ProgressIndicator").GetComponent<radialProgress>().time = time;
+    }
 
     public void BonusSelected()
     {
@@ -44,6 +51,7 @@ public class bonusScript : MonoBehaviour
             else if (n == 1)
             {
                 StartCoroutine(SpeedUp());
+                
             }
             else if (n == 2)
             {
@@ -110,9 +118,9 @@ public class bonusScript : MonoBehaviour
 
     IEnumerator SpeedUp()
     {
-        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);     
-
-        yield return new WaitForSeconds(10f);
+        spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);
+        DisplayTime(timeRemaining);
+        yield return new WaitForSeconds (timeRemaining);
         Debug.Log("timeEnd");
 
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(50);  //fin de la variation de la vitesse
@@ -123,8 +131,8 @@ public class bonusScript : MonoBehaviour
     IEnumerator SpeedDown()
     {
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(50);
-
-        yield return new WaitForSeconds(10f);
+        DisplayTime(timeRemaining);
+        yield return new WaitForSeconds(timeRemaining);
         Debug.Log("timeEnd");
 
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-50);  //fin de la variation de la vitesse
@@ -145,8 +153,8 @@ public class bonusScript : MonoBehaviour
         spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() * 2);
         spawn.GetComponent<SpawnFantome>().SetSpeedVariation(-80);
         spawn.GetComponent<SpawnFantome>().appVariation = 1;
-
-        yield return new WaitForSeconds(10f);
+        DisplayTime(timeRemaining);
+        yield return new WaitForSeconds(timeRemaining);
         Debug.Log("timeEnd");
 
         spawn.GetComponent<SpawnFantome>().setValScore(spawn.GetComponent<SpawnFantome>().getValScore() / 2);
