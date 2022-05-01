@@ -102,6 +102,9 @@ MonoBehaviour:
   n: 0
   proba: 70
   speed: 4
+  timerIsRunning: 0
+  CircularProgressBar: {fileID: 8611760494000576094, guid: c02a7a17d325642cc96eab97cfc9f891,
+    type: 3}
 --- !u!50 &2656183182678600155
 Rigidbody2D:
   serializedVersion: 4
