@@ -75,6 +75,18 @@ using UnityEngine;
         {
             isEnter = true;
         }
+        
+        if (other.gameObject.tag == "tapis" && !move && !isCatch)
+        {
+            if (modeDeJeu == 2)
+            {
+                transformFantome();
+            }
+            else if (modeDeJeu == 1)
+            {
+                StartCoroutine(GameObject.Find("player").GetComponent<touchFantome>().LunchLose());
+            }
+        }
 
     }
 
@@ -88,17 +100,6 @@ using UnityEngine;
                 move = false;
               }
               else { isError = false; }
-        }
-        if ((other.gameObject.tag == "tapis") && !move && !isCatch)
-        {
-            if (modeDeJeu == 2)
-            {
-                transformFantome();
-            }
-            else if (modeDeJeu == 1)
-            {
-                StartCoroutine(GameObject.Find("player").GetComponent<touchFantome>().LunchLose());
-            }
         }
     }
 
