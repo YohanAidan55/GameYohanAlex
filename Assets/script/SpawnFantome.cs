@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class SpawnFantome : MonoBehaviour
 {
-
+    int nb;
+    int somme;
     public Vector3 spawnPos;
-
+    List<Vector3> position;
     public GameObject fantR;
     public GameObject fantB;
     public GameObject fantJ;
@@ -86,22 +87,20 @@ public class SpawnFantome : MonoBehaviour
             {
                 for (int i = 0; i < appVariation; i++)    //Pour faire apparaitre plusieurs fantomes
                 {
-
                     proba = i * (scoreMax / (score+1));
                     int probaFantomenPlus = UnityEngine.Random.Range(0, Mathf.Abs(proba));
                     if (probaFantomenPlus == 0)
                     {
-                        int nb = UnityEngine.Random.Range(0, 4);
-                        spawnFantome(nb);
+                         nb = UnityEngine.Random.Range(0, 4);
+                         somme += 1;
                     }
-                    
                     n = 0;
                 }
+                spawnFantome(somme, nb);
+                somme = 0;
             }
-
             valApp = GetValFromMatrice(score, matriceApparition);
         }
-
     }
 
     
@@ -128,9 +127,37 @@ public class SpawnFantome : MonoBehaviour
 
     }
 
-    void spawnFantome(int color)
+    void spawnFantome(int somme, int color)
     {
-        Instantiate(fantArray[color], spawnPos, Quaternion.identity, parent.transform);
+        switch (somme)
+        {
+            case 1:
+                position =  new List<Vector3>{new (0f, 5.5f, 0f)};
+                InstantiateWithPostition(position, color);
+                break;
+            case 2:
+                position =  new List<Vector3>{
+                    new (-0.5f, 5.5f, 0f),
+                    new (0.5f, 5.5f, 0f)};
+                InstantiateWithPostition(position, color);
+                break;
+            case 3:
+                position =  new List<Vector3>{
+                    new (-0.8f, 5.5f, 0f),
+                    new (0f, 5.5f, 0f),
+                    new (0.8f, 5.5f, 0f)
+                };
+                InstantiateWithPostition(position, color);
+                break;
+        }
+    }
+
+    void InstantiateWithPostition(List<Vector3> position, int color)
+    {
+        for (var i = 0; i < position.Count; i++)
+        {
+            Instantiate(fantArray[color], position[i], Quaternion.identity, parent.transform);
+        }
     }
 
     void spawnBonus(int p)
