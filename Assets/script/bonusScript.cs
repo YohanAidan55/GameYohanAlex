@@ -78,32 +78,53 @@ public class bonusScript : MonoBehaviour
     {
         Transform vert = GameObject.Find("PanierVert").transform;
         Vector3 x = vert.transform.position;
-        Quaternion y = vert.transform.rotation;
+        Vector3 y = vert.transform.localScale;
 
-        GameObject.Find("PanierVert").transform.position = GameObject.Find("PanierRouge").transform.position;
-        GameObject.Find("PanierVert").transform.rotation = GameObject.Find("PanierRouge").transform.rotation;
-        GameObject.Find("PanierVert").GetComponent<PanContent>().resetRotation();   //repasse la rotation � 0 pour les fantomes dans les paniers
-
-        GameObject.Find("PanierRouge").transform.position = GameObject.Find("PanierJaune").transform.position;
-        GameObject.Find("PanierRouge").transform.rotation = GameObject.Find("PanierJaune").transform.rotation;
-        GameObject.Find("PanierRouge").GetComponent<PanContent>().resetRotation();   //repasse la rotation � 0 pour les fantomes dans les paniers
-
-        GameObject.Find("PanierJaune").transform.position = GameObject.Find("PanierBleu").transform.position;
-        GameObject.Find("PanierJaune").transform.rotation = GameObject.Find("PanierBleu").transform.rotation;
-        GameObject.Find("PanierJaune").GetComponent<PanContent>().resetRotation();   //repasse la rotation � 0 pour les fantomes dans les paniers
-
-        GameObject.Find("PanierBleu").transform.position = x;
-        GameObject.Find("PanierBleu").transform.rotation = y;
-        GameObject.Find("PanierBleu").GetComponent<PanContent>().resetRotation();   //repasse la rotation � 0 pour les fantomes dans les paniers
-
-        GameObject[] sysAngle = GameObject.FindGameObjectsWithTag("systeme");
-        for(int i = 0; i < sysAngle.Length; i++)
+        if(GameObject.Find("PanierVert").transform.position.x != GameObject.Find("PanierRouge").transform.position.x)
         {
-            if (sysAngle[i].GetComponent<DefensePanier>().angle)
-            {
-                sysAngle[i].transform.localPosition = new Vector2(sysAngle[i].transform.localPosition.x, -sysAngle[i].transform.localPosition.y);
-            }
+            GameObject.Find("PanierVert").transform.localScale = new Vector2(-GameObject.Find("PanierVert").transform.localScale.x, GameObject.Find("PanierVert").transform.localScale.y);
+            GameObject.Find("PanierVert").GetComponent<PanContent>().resetRotation();   //repasse la rotation � 0 pour les fantomes dans les paniers
         }
+        else
+        {
+            GameObject.Find("PanierVert").transform.Find("SystemAngle").transform.localPosition = new Vector2(GameObject.Find("PanierVert").transform.Find("SystemAngle").transform.localPosition.x, -GameObject.Find("PanierVert").transform.Find("SystemAngle").transform.localPosition.y);           
+        }
+        GameObject.Find("PanierVert").transform.position = GameObject.Find("PanierRouge").transform.position; 
+        
+
+        if (GameObject.Find("PanierRouge").transform.position.x != GameObject.Find("PanierJaune").transform.position.x)
+        {
+            GameObject.Find("PanierRouge").GetComponent<PanContent>().resetRotation();   //repasse la rotation � 0 pour les fantomes dans les paniers
+            GameObject.Find("PanierRouge").transform.localScale = new Vector2(-GameObject.Find("PanierRouge").transform.localScale.x, GameObject.Find("PanierRouge").transform.localScale.y);
+        }
+        else
+        {
+            GameObject.Find("PanierRouge").transform.Find("SystemAngle").transform.localPosition = new Vector2(GameObject.Find("PanierRouge").transform.Find("SystemAngle").transform.localPosition.x, -GameObject.Find("PanierRouge").transform.Find("SystemAngle").transform.localPosition.y);
+        }
+        GameObject.Find("PanierRouge").transform.position = GameObject.Find("PanierJaune").transform.position;
+
+        if (GameObject.Find("PanierJaune").transform.position.x != GameObject.Find("PanierBleu").transform.position.x)
+        {
+            GameObject.Find("PanierJaune").transform.localScale = new Vector2(-GameObject.Find("PanierJaune").transform.localScale.x, GameObject.Find("PanierJaune").transform.localScale.y);
+            GameObject.Find("PanierJaune").GetComponent<PanContent>().resetRotation();   //repasse la rotation � 0 pour les fantomes dans les paniers
+        }
+        else
+        {
+            GameObject.Find("PanierJaune").transform.Find("SystemAngle").transform.localPosition = new Vector2(GameObject.Find("PanierJaune").transform.Find("SystemAngle").transform.localPosition.x, -GameObject.Find("PanierJaune").transform.Find("SystemAngle").transform.localPosition.y);
+        }
+        GameObject.Find("PanierJaune").transform.position = GameObject.Find("PanierBleu").transform.position;
+
+        if (GameObject.Find("PanierBleu").transform.position.x != x.x)
+        {
+            GameObject.Find("PanierBleu").transform.localScale = new Vector2(-GameObject.Find("PanierBleu").transform.localScale.x, GameObject.Find("PanierBleu").transform.localScale.y);
+            GameObject.Find("PanierBleu").GetComponent<PanContent>().resetRotation();   //repasse la rotation � 0 pour les fantomes dans les paniers
+        }
+        else
+        {
+            GameObject.Find("PanierBleu").transform.Find("SystemAngle").transform.localPosition = new Vector2(GameObject.Find("PanierBleu").transform.Find("SystemAngle").transform.localPosition.x, -GameObject.Find("PanierBleu").transform.Find("SystemAngle").transform.localPosition.y);
+        }
+        GameObject.Find("PanierBleu").transform.position = x;
+
 
         Destroy(this.gameObject);
 

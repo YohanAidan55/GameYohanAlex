@@ -78,7 +78,7 @@ public class PanContent : MonoBehaviour
 
         for (int i = 0; i < Pan.Count; i++)             //parcours les syt�mes du panier
         {
-            Pan[i].gameObject.transform.localRotation = this.gameObject.transform.rotation;
+            Pan[i].gameObject.transform.localScale = new Vector2(-Pan[i].gameObject.transform.localScale.x, Pan[i].gameObject.transform.localScale.y);
         }
     }
 
