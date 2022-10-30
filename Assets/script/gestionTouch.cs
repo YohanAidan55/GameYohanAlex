@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class gestionTouch : MonoBehaviour
 {
@@ -29,6 +30,15 @@ public class gestionTouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(nbCartouche != 0)
+        {
+            GameObject.Find("nbCartouche").GetComponent<TextMeshPro>().text = nbCartouche.ToString();
+        }
+        else
+        {
+            GameObject.Find("nbCartouche").GetComponent<TextMeshPro>().text = "";
+        }
+        
 
         switch (Input.touchCount)
         {
