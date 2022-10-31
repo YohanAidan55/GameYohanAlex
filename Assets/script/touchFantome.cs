@@ -40,9 +40,9 @@ public class touchFantome : MonoBehaviour
             {
                 case 1:
 
-                    if ((clicFantome == true)&& (fantom != null))
+                    if ((clicFantome)&& (fantom != null))
                     {
-                        fantom.transform.position = this.transform.position;
+                        fantom.transform.position = transform.position;
                     }
 
                     release = false;
@@ -51,9 +51,9 @@ public class touchFantome : MonoBehaviour
 
                 case 2:
 
-                    if ((clicFantome == true)&&(fantom != null))
+                    if ((clicFantome)&&(fantom != null))
                     {
-                        fantom.transform.position = this.transform.position;
+                        fantom.transform.position = transform.position;
                     }
                     exploded = true;    //si l'objet est en mouvement, alors la cartouche ne fonctionne pas 
 
@@ -61,9 +61,9 @@ public class touchFantome : MonoBehaviour
 
                 case 3:
 
-                    if ((clicFantome == true) && (fantom != null))
+                    if ((clicFantome) && (fantom != null))
                     {
-                        fantom.transform.position = this.transform.position;
+                        fantom.transform.position = transform.position;
                     }
 
                     break;

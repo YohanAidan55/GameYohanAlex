@@ -34,7 +34,7 @@ using UnityEngine;
 
         if (move == false)
         {
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed) * Time.timeScale;
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed) * Time.timeScale;
         }
         else
         {
@@ -45,7 +45,7 @@ using UnityEngine;
 
         if (isEnter)
         {
-            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = !move;    //passe le isTrigger à true uniquement lorsque le fantome est dans le panier
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = !move;    //passe le isTrigger à true uniquement lorsque le fantome est dans le panier
         }
 
     }
@@ -53,23 +53,7 @@ using UnityEngine;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "panier")
-        {
-
-            if (other.gameObject.GetComponent<PanContent>().color == color)
-            {
-                GameObject.Find("player").GetComponent<Score>().sc += valScore;
-                List<GameObject> listFant = other.gameObject.GetComponent<PanContent>().Pan;
-                if (ajout == false)
-                {    //accede seulement à la première case NonReorderableAttribute rempli
-                    listFant.Add(gameObject);      //ajoute le fantome au tableau du panier
-                    gameObject.transform.parent = other.gameObject.transform;    //définit le panier du fantome comme étant son parent
-                    ajout = true;
-                }
-                isError = false;
-            }
-
-        }
+        
 
         if (other.gameObject.tag == "Respawn")
         {
@@ -94,7 +78,7 @@ using UnityEngine;
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "panier"){
-              if ((other.gameObject.GetComponent<PanContent>().color == color) && isCatch)
+              if (other.gameObject.GetComponent<PanContent>().color == color && isCatch)
               {
                 GameObject.Find("player").GetComponent<Score>().sc -= valScore;
                 move = false;
@@ -104,7 +88,23 @@ using UnityEngine;
     }
 
     void OnTriggerStay2D(Collider2D other)
-    {   //active la funtion Move si c'est le bon panier
+    {   
+        if (other.gameObject.tag == "panier")
+        {
+            if (other.gameObject.GetComponent<PanContent>().color == color)
+            {
+                if (ajout == false && !isCatch)
+                {    //accede seulement à la première case NonReorderableAttribute rempli
+                    GameObject.Find("player").GetComponent<Score>().sc += valScore;
+                    List<GameObject> listFant = other.gameObject.GetComponent<PanContent>().Pan;
+                    listFant.Add(gameObject);      //ajoute le fantome au tableau du panier
+                    gameObject.transform.parent = other.gameObject.transform;    //définit le panier du fantome comme étant son parent
+                    ajout = true;
+                }
+                isError = false;
+            }
+        }
+        //active la funtion Move si c'est le bon panier
         if ((other.gameObject.tag == "panier") && (other.gameObject.GetComponent<PanContent>().color == color))
         {
             move = true;
