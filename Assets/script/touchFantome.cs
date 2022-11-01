@@ -89,8 +89,7 @@ public class touchFantome : MonoBehaviour
                                 fantom = null;
                             }
                         }
-
-                        fantom.GetComponent<fantomeScript>().isCatch = false;
+                        if(fantom != null) fantom.GetComponent<fantomeScript>().isCatch = false;
                     }
 
                     transform.position = iniPos;
