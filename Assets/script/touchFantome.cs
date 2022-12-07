@@ -57,6 +57,41 @@ public class touchFantome : MonoBehaviour
                     }
                     exploded = true;    //si l'objet est en mouvement, alors la cartouche ne fonctionne pas 
 
+                    if (transform.position.x < -9.5 || transform.position.x > 9.5 || transform.position.y > 4 || transform.position.y < -3.5)   //Le jouer sort de la zone
+                    {
+                    if (clicFantome)
+                    {
+                        if (fantom.GetComponent<fantomeScript>().isError)
+                        {
+                            StartCoroutine(LunchLose());
+                        }
+
+                        if ((!fantom.GetComponent<fantomeScript>().move) && ((fantom.transform.position.x < -1) || (fantom.transform.position.x > 1)))      //si le fantome est laché hors du tapis
+                        {
+                            if (modeDeJeu == 1)
+                            {
+                                StartCoroutine(LunchLose());
+                            }
+                            else
+                            {
+                                fantom.GetComponent<fantomeScript>().transformFantome();
+                                fantom = null;
+                            }
+                        }
+
+                        fantom.GetComponent<fantomeScript>().isCatch = false;
+                    }
+
+                    transform.position = iniPos;
+                    clicFantome = false;
+                    release = true;
+                    fantom = null;
+                    exploded = false;
+
+                    status = 0;
+
+                    }
+
                     break;
 
                 case 3:
@@ -66,7 +101,42 @@ public class touchFantome : MonoBehaviour
                         fantom.transform.position = transform.position;
                     }
 
-                    break;
+                if (transform.position.x < -9.5 || transform.position.x > 9.5 || transform.position.y > 4 || transform.position.y < -3.5)   //Le jouer sort de la zone
+                {
+                    if (clicFantome)
+                    {
+                        if (fantom.GetComponent<fantomeScript>().isError)
+                        {
+                            StartCoroutine(LunchLose());
+                        }
+
+                        if ((!fantom.GetComponent<fantomeScript>().move) && ((fantom.transform.position.x < -1) || (fantom.transform.position.x > 1)))      //si le fantome est laché hors du tapis
+                        {
+                            if (modeDeJeu == 1)
+                            {
+                                StartCoroutine(LunchLose());
+                            }
+                            else
+                            {
+                                fantom.GetComponent<fantomeScript>().transformFantome();
+                                fantom = null;
+                            }
+                        }
+
+                        fantom.GetComponent<fantomeScript>().isCatch = false;
+                    }
+
+                    transform.position = iniPos;
+                    clicFantome = false;
+                    release = true;
+                    fantom = null;
+                    exploded = false;
+
+                    status = 0;
+
+                }
+
+                break;
 
                 case 4:
 
@@ -104,21 +174,53 @@ public class touchFantome : MonoBehaviour
             }
 
 
-        
-            if (Input.GetMouseButtonDown(0) && useMouse && status == -1)    //souris
+
+        if (Input.GetMouseButtonDown(0) && useMouse && status == -1)    //souris
+        {
+
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            startPos = ray.origin + ray.direction;
+            transform.position = startPos;
+
+            if ((clicFantome == true) && (fantom != null))
             {
-
-                var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                startPos = ray.origin + ray.direction;
-                transform.position = startPos;
-
-                if ((clicFantome == true)&&(fantom != null))
-                {
-                    fantom.transform.position = startPos;
-                } 
-                release = false;
-
+                fantom.transform.position = startPos;
             }
+            release = false;
+            Debug.Log(transform.position.x);
+            if (transform.position.x < -9.5 || transform.position.x > 9.5 || transform.position.y > 4 || transform.position.y < -3.5)   //Le jouer sort de la zone
+            {
+                if (clicFantome)
+                {
+                    if (fantom.GetComponent<fantomeScript>().isError)
+                    {
+                        StartCoroutine(LunchLose());
+                    }
+
+                    if ((!fantom.GetComponent<fantomeScript>().move) && ((fantom.transform.position.x < -1) || (fantom.transform.position.x > 1)))
+                    {
+                        if (modeDeJeu == 1)
+                        {
+                            StartCoroutine(LunchLose());
+                        }
+                        else
+                        {
+                            fantom.GetComponent<fantomeScript>().transformFantome();
+                            fantom = null;
+                        }
+                    }
+
+                    fantom.GetComponent<fantomeScript>().isCatch = false;
+                }
+
+                transform.position = iniPos;
+                clicFantome = false;
+                release = true;
+                fantom = null;
+                exploded = false;
+                }
+            }
+            
 
             if (Input.GetMouseButtonUp(0) && useMouse && status == -1)  //le touch retourne à son endroit inititial
             {
