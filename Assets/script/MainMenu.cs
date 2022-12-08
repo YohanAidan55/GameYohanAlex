@@ -18,4 +18,9 @@ public class MainMenu : MonoBehaviour{
         PlayerPrefs.SetInt("mode", mode);
         SceneManager.LoadScene("game");
     }
+    
+    public void loadBonusList()
+    {
+        SceneManager.LoadScene("listeDesBonus");
+    }
 }
