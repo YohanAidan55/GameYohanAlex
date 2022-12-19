@@ -309,6 +309,8 @@ public class touchFantome : MonoBehaviour
     public IEnumerator LunchLose()
     {
         yield return new WaitForSeconds(1);
+        PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount")+1);
+        Debug.Log(PlayerPrefs.GetInt("deadCount"));
         SceneManager.LoadScene("menuLose");
     }
 }

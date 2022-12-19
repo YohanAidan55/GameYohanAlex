@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour{
@@ -9,6 +10,7 @@ public class MainMenu : MonoBehaviour{
     {
         mode = 1;
         PlayerPrefs.SetInt("mode", mode);
+        PlayerPrefs.SetInt("deadCount", 0);
         SceneManager.LoadScene("game");
     }
     
@@ -16,6 +18,7 @@ public class MainMenu : MonoBehaviour{
     {
         mode = 2;
         PlayerPrefs.SetInt("mode", mode);
+        PlayerPrefs.SetInt("deadCount", 0);
         SceneManager.LoadScene("game");
     }
     
