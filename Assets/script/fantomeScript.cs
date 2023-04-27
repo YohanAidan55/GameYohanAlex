@@ -29,12 +29,12 @@ using UnityEngine;
         modeDeJeu = PlayerPrefs.GetInt("mode");
     }
 
-    void Update()
+    void FixedUpdate()
     {        
 
         if (move == false)
         {
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed) * Time.timeScale;
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed) * Time.deltaTime;
         }
         else
         {
@@ -50,6 +50,17 @@ using UnityEngine;
 
     }
 
+    void Update()
+    {
+        if (isCatch)   //adapte le bow collider pour éviter le bug : lorsque un fantome est sur la limite du panier il ne e transforme pas
+        {
+            GetComponent<BoxCollider2D>().size = new Vector2(1f, 0.2f);
+        }
+        else
+        {
+            GetComponent<BoxCollider2D>().size = new Vector2(4.03f, 5.19f);
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -80,7 +91,7 @@ using UnityEngine;
         if (other.gameObject.tag == "panier"){
               if (other.gameObject.GetComponent<PanContent>().color == color && isCatch)
               {
-                GameObject.Find("player").GetComponent<Score>().sc -= valScore;
+                //GameObject.Find("player").GetComponent<Score>().sc -= valScore;
                 move = false;
               }
               else { isError = false; }
@@ -133,7 +144,7 @@ using UnityEngine;
             n += 1;
             if (n > 50)
             {
-                this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2) * Time.timeScale);
+                this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2) * Time.deltaTime);
                 n = 0;
             }
         }

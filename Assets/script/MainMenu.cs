@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour{
 
-    private int mode;
+    public int mode;
 
     public void PlayMode1()
     {
