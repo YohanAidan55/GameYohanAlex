@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class touchFantome : MonoBehaviour
 {
@@ -32,6 +33,17 @@ public class touchFantome : MonoBehaviour
         status = -1; //si le status ne change pas alors on est pas en mode tactile
     }
 
+    void refreshTouch()
+    {
+        transform.position = iniPos;
+        clicFantome = false;
+        release = true;
+        fantom = null;
+        exploded = false;
+
+        status = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -59,7 +71,7 @@ public class touchFantome : MonoBehaviour
 
                     if (transform.position.x < -9.5 || transform.position.x > 9.5 || transform.position.y > 4 || transform.position.y < -3.5)   //Le jouer sort de la zone
                     {
-                    if (clicFantome)
+                    if ((clicFantome)&&(fantom != null))
                     {
                         if (fantom.GetComponent<fantomeScript>().isError)
                         {
@@ -78,17 +90,10 @@ public class touchFantome : MonoBehaviour
                                 fantom = null;
                             }
                         }
-
-                        fantom.GetComponent<fantomeScript>().isCatch = false;
+                        if (fantom != null) fantom.GetComponent<fantomeScript>().isCatch = false;
                     }
 
-                    transform.position = iniPos;
-                    clicFantome = false;
-                    release = true;
-                    fantom = null;
-                    exploded = false;
-
-                    status = 0;
+                    refreshTouch();
 
                     }
 
@@ -103,7 +108,7 @@ public class touchFantome : MonoBehaviour
 
                 if (transform.position.x < -9.5 || transform.position.x > 9.5 || transform.position.y > 4 || transform.position.y < -3.5)   //Le jouer sort de la zone
                 {
-                    if (clicFantome)
+                    if ((clicFantome)&&(fantom != null))
                     {
                         if (fantom.GetComponent<fantomeScript>().isError)
                         {
@@ -122,17 +127,11 @@ public class touchFantome : MonoBehaviour
                                 fantom = null;
                             }
                         }
+                        if (fantom != null) fantom.GetComponent<fantomeScript>().isCatch = false;
 
-                        fantom.GetComponent<fantomeScript>().isCatch = false;
                     }
 
-                    transform.position = iniPos;
-                    clicFantome = false;
-                    release = true;
-                    fantom = null;
-                    exploded = false;
-
-                    status = 0;
+                    refreshTouch();
 
                 }
 
@@ -140,7 +139,7 @@ public class touchFantome : MonoBehaviour
 
                 case 4:
 
-                    if (clicFantome)
+                    if ((clicFantome)&&(fantom != null))
                     {
                         if (fantom.GetComponent<fantomeScript>().isError)
                         {
@@ -162,13 +161,7 @@ public class touchFantome : MonoBehaviour
                         if(fantom != null) fantom.GetComponent<fantomeScript>().isCatch = false;
                     }
 
-                    transform.position = iniPos;
-                    clicFantome = false;
-                    release = true;                   
-                    fantom = null;
-                    exploded = false;
-
-                    status = 0;
+                refreshTouch();
 
                     break;
             }
@@ -213,11 +206,7 @@ public class touchFantome : MonoBehaviour
                     fantom.GetComponent<fantomeScript>().isCatch = false;
                 }
 
-                transform.position = iniPos;
-                clicFantome = false;
-                release = true;
-                fantom = null;
-                exploded = false;
+                refreshTouch();
                 }
             }
             
@@ -247,11 +236,7 @@ public class touchFantome : MonoBehaviour
                     fantom.GetComponent<fantomeScript>().isCatch = false;
                 }
 
-                transform.position = iniPos;
-                clicFantome = false;
-                release = true;               
-                fantom = null;
-                exploded = false;
+            refreshTouch();
             }
 
 

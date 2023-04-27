@@ -24,12 +24,14 @@ public class SpawnFantome : MonoBehaviour
 
     int x, y;  //variable pour récupérer une valeur dans la matrice
 
+    int GameModeBonus; //=2 si c'est le mode normal sans fantome noir
+
 
     public int[,] matriceApparition =       //matrice de taux d'apparition
     {
-        {150, 140, 130, 120, 110},
-        {130, 120, 110, 100, 90},
+        {120, 110, 100, 90, 80},
         {110, 100, 90, 80, 70},
+        {100, 90, 80, 70, 60},
         {90, 80, 70, 60, 50},
         {70, 60, 50, 50, 50},
         {50, 50, 50, 50, 50},
@@ -50,6 +52,8 @@ public class SpawnFantome : MonoBehaviour
     int score;
     int valScore;  //combien de point par fantome ajouté
 
+    public int appBonus;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +62,16 @@ public class SpawnFantome : MonoBehaviour
 
         valApp = GetValFromMatrice(score, matriceApparition);   //première ValApp
         valScore = 1;
+        
+        if(PlayerPrefs.GetInt("mode") == 1)
+        {
+            GameModeBonus = 2;
+        }
+        else
+        {
+            GameModeBonus = 0;
+        }
+       
     }
 
     // Update is called once per frame
@@ -75,7 +89,7 @@ public class SpawnFantome : MonoBehaviour
              {
                  tauxAppBonus = score / 10 * 2;
              }*/
-            int appBonus = UnityEngine.Random.Range(0, tauxAppBonus);
+            appBonus = UnityEngine.Random.Range(0, tauxAppBonus);
 
             if (appBonus == valAppBonus)
             {
@@ -91,12 +105,11 @@ public class SpawnFantome : MonoBehaviour
                     int probaFantomenPlus = UnityEngine.Random.Range(0, Mathf.Abs(proba));
                     if (probaFantomenPlus == 0)
                     {
-                         nb = UnityEngine.Random.Range(0, 4);
                          somme += 1;
                     }
                     n = 0;
                 }
-                spawnFantome(somme, nb);
+                spawnFantome(somme);
                 somme = 0;
             }
             valApp = GetValFromMatrice(score, matriceApparition);
@@ -127,42 +140,41 @@ public class SpawnFantome : MonoBehaviour
 
     }
 
-    void spawnFantome(int somme, int color)
+    void spawnFantome(int somme)
     {
         switch (somme)
         {
             case 1:
                 position =  new List<Vector3>{new (0f, 5.5f, 0f)};
-                InstantiateWithPostition(position, color);
+                InstantiateWithPostition(position);
                 break;
             case 2:
                 position =  new List<Vector3>{
                     new (-0.5f, 5.5f, 0f),
                     new (0.5f, 5.5f, 0f)};
-                InstantiateWithPostition(position, color);
+                InstantiateWithPostition(position);
                 break;
             case 3:
                 position =  new List<Vector3>{
                     new (-0.8f, 5.5f, 0f),
                     new (0f, 5.5f, 0f),
-                    new (0.8f, 5.5f, 0f)
-                };
-                InstantiateWithPostition(position, color);
+                    new (0.8f, 5.5f, 0f)};
+                InstantiateWithPostition(position);
                 break;
         }
     }
 
-    void InstantiateWithPostition(List<Vector3> position, int color)
+    void InstantiateWithPostition(List<Vector3> position)
     {
         for (var i = 0; i < position.Count; i++)
         {
-            Instantiate(fantArray[color], position[i], Quaternion.identity, parent.transform);
+            Instantiate(fantArray[UnityEngine.Random.Range(0, 4)], position[i], Quaternion.identity, parent.transform);
         }
     }
 
     void spawnBonus(int p)
     {
-        for (int i = 0; i < tabBonus.Length; i++)
+        for (int i = 0; i < tabBonus.Length - GameModeBonus; i++)
         {
             if(p <= tabBonus[i].GetComponent<bonusScript>().proba)
             {

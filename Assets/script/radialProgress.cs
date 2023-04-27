@@ -12,10 +12,10 @@ public class radialProgress : MonoBehaviour
         {
             GameObject.Find("LoadingBar").GetComponent<Image>().enabled = true;
             GameObject.Find("Center").GetComponent<Image>().enabled = true;
-            gameObject.GetComponent<Text>().enabled = true;
-            
+            //gameObject.GetComponent<Text>().enabled = true;
+
             float seconds = Mathf.FloorToInt(time % 60);
-            ProgressIndicator.text = seconds.ToString() + 's';
+            //ProgressIndicator.text = seconds.ToString() + 's';
             LoadingBar.fillAmount = seconds / 10;
             time -=  Time.deltaTime;
         }
@@ -23,7 +23,7 @@ public class radialProgress : MonoBehaviour
         {
             GameObject.Find("LoadingBar").GetComponent<Image>().enabled = false;
             GameObject.Find("Center").GetComponent<Image>().enabled = false;
-            gameObject.GetComponent<Text>().enabled = false;
+            //gameObject.GetComponent<Text>().enabled = false;
         }
     }
 }

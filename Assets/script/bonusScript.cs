@@ -17,17 +17,20 @@ public class bonusScript : MonoBehaviour
     
     private int timeRemaining = 11;
 
+    Sprite bonusSprite;
+
     // Start is called before the first frame update
     void Start()
     {
         spawn = GameObject.Find("player");
+        bonusSprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
     }
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed) * Time.timeScale;
+        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed) * Time.deltaTime;
         if((this.transform.position.y <= -10)&&(!isEffected))
         {
             Destroy(this.gameObject);
@@ -36,7 +39,8 @@ public class bonusScript : MonoBehaviour
 
     void DisplayTime(float time)
     {
-        GameObject.Find("ProgressIndicator").GetComponent<radialProgress>().time = time;
+        GameObject.Find("Center").GetComponent<Image>().sprite = bonusSprite;
+        GameObject.Find("ProgressIndicator").GetComponent<radialProgress>().time = time;       
     }
 
     public void BonusSelected()

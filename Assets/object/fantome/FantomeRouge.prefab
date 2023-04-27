@@ -121,7 +121,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008513927, y: 0.0030325651}
+  m_Offset: {x: 0.0073862076, y: -0.1185925}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -132,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.232993, y: 5.594816}
+  m_Size: {x: 4.0375805, y: 5.198426}
   m_EdgeRadius: 0
 --- !u!114 &3533396211122033346
 MonoBehaviour:
@@ -154,4 +154,4 @@ MonoBehaviour:
   fantomeMechant: {fileID: 1669860343301667205, guid: 466964ca410e37a4990c59a9842538be,
     type: 3}
   parent: {fileID: 0}
-  speed: 4
+  speed: 250

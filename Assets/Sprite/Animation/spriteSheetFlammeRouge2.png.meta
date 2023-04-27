@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ac2648f672376ff4a8772d4c819df06e
+guid: 84916991c5dce374f8560f0bb0e47140
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -112,38 +112,29 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spriteSheetFlammeRouge_0
+      name: spriteSheetFlammeRouge2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1034
-        width: 505
-        height: 466
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 2, z: 1, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db593c043674382439172adcd24f8c7e
-      internalID: 841317504
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spriteSheetFlammeRouge_1
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 905
-        width: 505
-        height: 595
+        x: 92
+        y: 1509
+        width: 509
+        height: 867
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,134 +142,155 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edf66d40811de2d4586a3b4638de9de2
-      internalID: 463508836
+      spriteID: 68f83394588fb674791458007111cb05
+      internalID: -1519228689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spriteSheetFlammeRouge_2
+      name: spriteSheetFlammeRouge2_1
       rect:
         serializedVersion: 2
-        x: 1366
-        y: 857
-        width: 505
-        height: 643
+        x: 790
+        y: 1505
+        width: 509
+        height: 867
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d353e0bf36ddfa040b00cc655f2b28a7
-      internalID: -1940521233
+      spriteID: b41b13239131ccc439e400d25c379f73
+      internalID: -831665876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spriteSheetFlammeRouge_3
+      name: spriteSheetFlammeRouge2_2
       rect:
         serializedVersion: 2
-        x: 2217
-        y: 853
-        width: 505
-        height: 647
+        x: 1583
+        y: 1510
+        width: 509
+        height: 867
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd8fa7e6849c62f43822693a58deddac
-      internalID: -426779991
+      spriteID: a2c12570cedc27c45adcd5d438233d1d
+      internalID: 1156694964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spriteSheetFlammeRouge_4
+      name: spriteSheetFlammeRouge2_3
       rect:
         serializedVersion: 2
-        x: 26
-        y: 20
-        width: 505
-        height: 839
+        x: 2344
+        y: 1509
+        width: 509
+        height: 867
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81f93b1d95972e54cb79dcbf0800e34c
-      internalID: 534915229
+      spriteID: 201edd73c7793a9409ed2a21313a0977
+      internalID: -1601297739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spriteSheetFlammeRouge_5
+      name: spriteSheetFlammeRouge2_4
       rect:
         serializedVersion: 2
-        x: 778
-        y: 21
-        width: 505
-        height: 837
+        x: 111
+        y: 323
+        width: 509
+        height: 867
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b55936054f62c7f4ab77921ab88cd450
-      internalID: -1039259174
+      spriteID: 9c8403ba68489f54d9907d6b7549d9d2
+      internalID: 578553173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spriteSheetFlammeRouge_6
+      name: spriteSheetFlammeRouge2_5
       rect:
         serializedVersion: 2
-        x: 1483
-        y: 8
-        width: 505
-        height: 850
+        x: 840
+        y: 326
+        width: 509
+        height: 867
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0c7440ef3ce0a84e80f1056eadb7e86
-      internalID: 1667656008
+      spriteID: c2e22487c56fddb4a910c0551ecbdfac
+      internalID: 508470995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spriteSheetFlammeRouge_7
+      name: spriteSheetFlammeRouge2_6
       rect:
         serializedVersion: 2
-        x: 2250
-        y: 16
-        width: 505
-        height: 840
+        x: 1630
+        y: 326
+        width: 509
+        height: 867
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e908e653c9def144e8b4b606b5f32993
-      internalID: 61548791
+      spriteID: 855eceefae025b2409961ce1c73e4471
+      internalID: 136006350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spriteSheetFlammeRouge2_7
+      rect:
+        serializedVersion: 2
+        x: 2350
+        y: 325
+        width: 509
+        height: 867
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b11269e9a8415b49b7964bef48e0b56
+      internalID: -2135054039
       vertices: []
       indices: 
       edges: []
@@ -294,14 +306,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spriteSheetFlammeRouge_5: -1039259174
-      spriteSheetFlammeRouge_3: -426779991
-      spriteSheetFlammeRouge_6: 1667656008
-      spriteSheetFlammeRouge_4: 534915229
-      spriteSheetFlammeRouge_7: 61548791
-      spriteSheetFlammeRouge_2: -1940521233
-      spriteSheetFlammeRouge_0: 841317504
-      spriteSheetFlammeRouge_1: 463508836
+      spriteSheetFlammeRouge2_5: 578553173
+      spriteSheetFlammeRouge2_4: -1601297739
+      spriteSheetFlammeRouge2_6: 508470995
+      spriteSheetFlammeRouge2_2: 1156694964
+      spriteSheetFlammeRouge2_0: -606750740
+      spriteSheetFlammeRouge2_1: -831665876
+      spriteSheetFlammeRouge2_3: -1077862861
+      spriteSheetFlammeRouge2_7: 136006350
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

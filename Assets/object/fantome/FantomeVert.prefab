@@ -154,4 +154,4 @@ MonoBehaviour:
   fantomeMechant: {fileID: 1669860343301667205, guid: 466964ca410e37a4990c59a9842538be,
     type: 3}
   parent: {fileID: 0}
-  speed: 4
+  speed: 250
