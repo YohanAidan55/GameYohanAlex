@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class gestionTouch : MonoBehaviour
@@ -15,7 +14,7 @@ public class gestionTouch : MonoBehaviour
     Vector2 startPos;
     Vector2 currentPos;
 
-    public int nbCartouche; //les nombre de cartouche antiFantome du joueur sont stockés ici
+    public int nbCartouche; //les nombre de cartouche antiFantome du joueur sont stockï¿½s ici
 
 
     // Start is called before the first frame update
@@ -32,11 +31,13 @@ public class gestionTouch : MonoBehaviour
     {
         if(nbCartouche != 0)
         {
-            GameObject.Find("nbCartouche").GetComponent<TextMeshPro>().text = nbCartouche.ToString();
+            GameObject.Find("cartoucheBonus").GetComponent<Image>().enabled = true;
+            GameObject.Find("nbCartouche").GetComponent<Text>().text = "x" +nbCartouche.ToString();
         }
         else
         {
-            GameObject.Find("nbCartouche").GetComponent<TextMeshPro>().text = "";
+            GameObject.Find("cartoucheBonus").GetComponent<Image>().enabled = false;
+            GameObject.Find("nbCartouche").GetComponent<Text>().text = "";
         }
         
 
@@ -78,11 +79,11 @@ public class gestionTouch : MonoBehaviour
         switch (touch.phase)
         {
 
-            case TouchPhase.Began: //le touch prend la valeur de l'endroit où l'on clique
+            case TouchPhase.Began: //le touch prend la valeur de l'endroit oï¿½ l'on clique
 
                 click.GetComponent<touchFantome>().status = 1;
 
-                var ray = Camera.main.ScreenPointToRay(touch.position); //récupère la position du clic
+                var ray = Camera.main.ScreenPointToRay(touch.position); //rï¿½cupï¿½re la position du clic
                 startPos = ray.origin + ray.direction;
 
                 click.transform.position = startPos;
@@ -117,7 +118,7 @@ public class gestionTouch : MonoBehaviour
 
                 click.transform.position = iniPos;           
                 
-                if ((Input.touchCount == 2) &&(click == click1))  //si on a deux doigts posés sur l'écran et qu'on soulève le premier doigt posé
+                if ((Input.touchCount == 2) &&(click == click1))  //si on a deux doigts posï¿½s sur l'ï¿½cran et qu'on soulï¿½ve le premier doigt posï¿½
                 {
                     clickChange = true;
                 }else if((Input.touchCount == 2) && (click == click2))
