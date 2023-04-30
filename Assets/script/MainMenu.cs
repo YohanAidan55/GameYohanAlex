@@ -6,6 +6,11 @@ public class MainMenu : MonoBehaviour{
 
     public int mode;
 
+    void Start()
+    {
+        GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
+    }
+
     public void PlayMode1()
     {
         mode = 1;

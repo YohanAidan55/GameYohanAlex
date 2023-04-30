@@ -6,6 +6,14 @@ public class menuLose : MonoBehaviour
 {
     public int score;
 
+    [SerializeField]
+    AudioSource backMusic;
+
+    void Start()
+    {
+        GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
+    }
+
     void Update()
         {
             score = PlayerPrefs.GetInt("score");
