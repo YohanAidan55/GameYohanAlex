@@ -12,6 +12,9 @@ public class PanContent : MonoBehaviour
 
     public bool isDestroy;   //passe � true si un syst�me est d�truit pour �viter l'occurence
 
+    [SerializeField]
+    GameObject animDestroy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +48,7 @@ public class PanContent : MonoBehaviour
     
     public void CoroutineLose()
     {
+        animDestroy.SetActive(true);
         DestroyFantome(Pan);
         gameObject.GetComponent<SpriteRenderer>().sprite = null;
         StartCoroutine(GameObject.Find("player").GetComponent<touchFantome>().LunchLose());

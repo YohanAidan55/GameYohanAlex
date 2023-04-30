@@ -6,6 +6,8 @@ public class MainMenu : MonoBehaviour{
 
     public int mode;
 
+    [SerializeField] Sprite spMute, spDemute;
+
     void Start()
     {
         GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
@@ -30,5 +32,11 @@ public class MainMenu : MonoBehaviour{
     public void loadBonusList()
     {
         SceneManager.LoadScene("listeDesBonus");
+    }
+
+    public void MuteSong()
+    {
+        Debug.Log("OKKKK");
+        GameObject.Find("Mute").GetComponent<SpriteRenderer>().sprite = spMute;
     }
 }
