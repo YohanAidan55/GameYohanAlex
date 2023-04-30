@@ -102,6 +102,7 @@ MonoBehaviour:
   n: 0
   proba: 36
   speed: 250
+  bonusClip: {fileID: 8300000, guid: 742f01cc177574e8bac57707cfa4f609, type: 3}
 --- !u!50 &2656183182678600155
 Rigidbody2D:
   serializedVersion: 4

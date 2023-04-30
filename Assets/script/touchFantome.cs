@@ -23,9 +23,15 @@ public class touchFantome : MonoBehaviour
 
     public bool useMouse;  //est à true pour l'objet touch uniquement
 
+    [SerializeField]
+    AudioSource destroySong;
+    [SerializeField] AudioClip loseClip;
+    AudioSource _audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        _audioSource = GameObject.Find("Canvas").GetComponent<AudioSource>();
         modeDeJeu = PlayerPrefs.GetInt("mode");
 
         iniPos = new Vector2(-15, 0);
@@ -286,6 +292,8 @@ public class touchFantome : MonoBehaviour
     {
        if ((other.gameObject.tag == "fantomeMechant") && (GameObject.Find("player").GetComponent<gestionTouch>().nbCartouche > 0) && !release && !exploded)        //si le joueur veut utiliser une cartouche
        {
+            destroySong.Play();
+
             Destroy(other.gameObject);
             mechantTouch = true;
         }
@@ -293,7 +301,9 @@ public class touchFantome : MonoBehaviour
 
     public IEnumerator LunchLose()
     {
-        yield return new WaitForSeconds(1);
+        _audioSource.clip = loseClip;
+        _audioSource.Play();
+        yield return new WaitForSeconds(loseClip.length+1);
         PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount")+1);
         Debug.Log(PlayerPrefs.GetInt("deadCount"));
         SceneManager.LoadScene("menuLose");

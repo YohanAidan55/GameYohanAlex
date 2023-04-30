@@ -23,9 +23,12 @@ using UnityEngine;
     int valScore;
 
     public int speed;
+    [SerializeField] AudioClip fantomeNoirClip;
+    AudioSource _audioSource;
 
     void Start()
     {
+        _audioSource = GameObject.Find("Canvas").GetComponent<AudioSource>();
         modeDeJeu = PlayerPrefs.GetInt("mode");
     }
 
@@ -130,6 +133,8 @@ using UnityEngine;
 
     public void transformFantome()
     {
+        _audioSource.clip = fantomeNoirClip;
+        _audioSource.Play();
         Destroy(gameObject);
         parent = GameObject.Find("NavMesh2D");
         

@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: proba
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2484688665805726739, guid: 0dc8fee7921d33141a57175b0b114473,
+        type: 3}
+      propertyPath: bonusClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5004766a3822b754d93a883419ede972, type: 3}
     - target: {fileID: 2943825054361216245, guid: 0dc8fee7921d33141a57175b0b114473,
         type: 3}
       propertyPath: m_Sprite

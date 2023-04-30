@@ -45,10 +45,8 @@ public class PanContent : MonoBehaviour
     
     public void CoroutineLose()
     {
-        //yield return new WaitForSeconds(1);
         DestroyFantome(Pan);
         gameObject.GetComponent<SpriteRenderer>().sprite = null;
-        //SceneManager.LoadScene("menuLose");
         StartCoroutine(GameObject.Find("player").GetComponent<touchFantome>().LunchLose());
     }
 
