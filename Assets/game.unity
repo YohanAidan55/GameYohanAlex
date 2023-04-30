@@ -1244,6 +1244,7 @@ MonoBehaviour:
   angle: 1
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &281717471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2571,6 +2572,7 @@ MonoBehaviour:
   angle: 1
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &475118917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3000,6 +3002,7 @@ MonoBehaviour:
   angle: 1
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &529830945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3627,6 +3630,7 @@ MonoBehaviour:
   angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &635435171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3989,6 +3993,7 @@ MonoBehaviour:
   angle: 1
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &743972796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4136,6 +4141,7 @@ MonoBehaviour:
   angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &763316190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4547,6 +4553,7 @@ MonoBehaviour:
   angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &1037370495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4947,6 +4954,7 @@ MonoBehaviour:
   angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &1125251686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6575,6 +6583,7 @@ MonoBehaviour:
   release: 1
   useMouse: 0
   destroySong: {fileID: 472471788}
+  loseClip: {fileID: 8300000, guid: e71861904939541f8b01875904accb70, type: 3}
 --- !u!58 &1727466402
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7516,6 +7525,7 @@ MonoBehaviour:
   angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &1971231507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7654,6 +7664,7 @@ GameObject:
   - component: {fileID: 1999181996}
   - component: {fileID: 1999181995}
   - component: {fileID: 1999181994}
+  - component: {fileID: 1999181997}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -7743,6 +7754,102 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!82 &1999181997
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999181992}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2040720426
 GameObject:
   m_ObjectHideFlags: 0
@@ -8083,6 +8190,7 @@ MonoBehaviour:
   angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &2090408872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8306,6 +8414,7 @@ MonoBehaviour:
   release: 1
   useMouse: 0
   destroySong: {fileID: 472471788}
+  loseClip: {fileID: 8300000, guid: e71861904939541f8b01875904accb70, type: 3}
 --- !u!58 &2113696915
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8453,6 +8562,7 @@ MonoBehaviour:
   angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &2115938255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8600,6 +8710,7 @@ MonoBehaviour:
   angle: 0
   nbrEnnemy: 0
   spriteDetruit: {fileID: 21300000, guid: a6a1e2025a6b479499a7ccba8542758d, type: 3}
+  panierDefenseClip: {fileID: 8300000, guid: 4e2109cd813d34b0886478cd68367c43, type: 3}
 --- !u!114 &2132620913
 MonoBehaviour:
   m_ObjectHideFlags: 0

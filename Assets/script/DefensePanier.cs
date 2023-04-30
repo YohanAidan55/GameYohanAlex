@@ -10,9 +10,13 @@ public class DefensePanier : MonoBehaviour
         public int nbrEnnemy = 0;
 
         public Sprite spriteDetruit;
+        [SerializeField] AudioClip panierDefenseClip;
+        AudioSource _audioSource;
+
 
         private void Start()
         {
+            _audioSource = GameObject.Find("Canvas").GetComponent<AudioSource>();
             color = gameObject.GetComponentInParent<PanContent>().color;
         }
 
@@ -50,7 +54,9 @@ public class DefensePanier : MonoBehaviour
             if ((other.gameObject.tag == "fantomeMechant") && (color == other.gameObject.GetComponent<IAMechant>().color))
             {
                 if (pointDeVie == 0)
-                {                       
+                {
+                    _audioSource.clip = panierDefenseClip;
+                    _audioSource.Play();
                     gameObject.GetComponentInParent<PanContent>().isDestroy = true;
                     Destroy(gameObject.transform.GetChild(0).gameObject);
                 }

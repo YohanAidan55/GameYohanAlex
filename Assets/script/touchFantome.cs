@@ -25,10 +25,13 @@ public class touchFantome : MonoBehaviour
 
     [SerializeField]
     AudioSource destroySong;
+    [SerializeField] AudioClip loseClip;
+    AudioSource _audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        _audioSource = GameObject.Find("Canvas").GetComponent<AudioSource>();
         modeDeJeu = PlayerPrefs.GetInt("mode");
 
         iniPos = new Vector2(-15, 0);
@@ -298,7 +301,9 @@ public class touchFantome : MonoBehaviour
 
     public IEnumerator LunchLose()
     {
-        yield return new WaitForSeconds(1);
+        _audioSource.clip = loseClip;
+        _audioSource.Play();
+        yield return new WaitForSeconds(loseClip.length+1);
         PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount")+1);
         Debug.Log(PlayerPrefs.GetInt("deadCount"));
         SceneManager.LoadScene("menuLose");

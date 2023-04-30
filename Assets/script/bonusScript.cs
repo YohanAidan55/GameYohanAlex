@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,10 +20,14 @@ public class bonusScript : MonoBehaviour
 
     Sprite bonusSprite;
 
+    [SerializeField] AudioClip bonusClip;
+    AudioSource _audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         spawn = GameObject.Find("player");
+        _audioSource = GameObject.Find("Canvas").GetComponent<AudioSource>();
         bonusSprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
     }
 
@@ -55,7 +60,6 @@ public class bonusScript : MonoBehaviour
             else if (n == 1)
             {
                 StartCoroutine(SpeedUp());
-                
             }
             else if (n == 2)
             {
@@ -72,6 +76,8 @@ public class bonusScript : MonoBehaviour
             {
                 Bombe();
             }
+            _audioSource.clip = bonusClip;
+            _audioSource.Play();
         }
 
         isEffected = true;  //empeche le joueur de cliquer deux fois sur le bonus
