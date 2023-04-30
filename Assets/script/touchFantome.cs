@@ -23,6 +23,9 @@ public class touchFantome : MonoBehaviour
 
     public bool useMouse;  //est à true pour l'objet touch uniquement
 
+    [SerializeField]
+    AudioSource destroySong;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -286,6 +289,8 @@ public class touchFantome : MonoBehaviour
     {
        if ((other.gameObject.tag == "fantomeMechant") && (GameObject.Find("player").GetComponent<gestionTouch>().nbCartouche > 0) && !release && !exploded)        //si le joueur veut utiliser une cartouche
        {
+            destroySong.Play();
+
             Destroy(other.gameObject);
             mechantTouch = true;
         }
