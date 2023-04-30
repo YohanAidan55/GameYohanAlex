@@ -174,6 +174,7 @@ public class bonusScript : MonoBehaviour
 
     void AddCartouche()
     {
+        
         spawn.GetComponent<gestionTouch>().nbCartouche++;
         Destroy(this.gameObject);
     }
