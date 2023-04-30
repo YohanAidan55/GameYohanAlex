@@ -31,7 +31,7 @@ public class touchFantome : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _audioSource = GameObject.Find("Canvas").GetComponent<AudioSource>();
+        _audioSource = GameObject.Find("globalLigth").GetComponent<AudioSource>();
         modeDeJeu = PlayerPrefs.GetInt("mode");
 
         iniPos = new Vector2(-15, 0);
@@ -304,7 +304,7 @@ public class touchFantome : MonoBehaviour
         _audioSource.clip = loseClip;
         _audioSource.Play();
         yield return new WaitForSeconds(loseClip.length+1);
-        PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount")+1);
+        PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount"));
         Debug.Log(PlayerPrefs.GetInt("deadCount"));
         SceneManager.LoadScene("menuLose");
     }
