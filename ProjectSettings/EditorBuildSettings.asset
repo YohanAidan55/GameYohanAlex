@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/menuLose.unity
     guid: 90297c4640f1bfd499bcd8ead8a939eb
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/listeDesBonus.unity
     guid: d2598c79e28c04cfc8fd3a3a0ae0c0d6
+  - enabled: 1
+    path: Assets/credit.unity
+    guid: 77f21d3af61ed7c48b56fbb6d11395c7
   m_configObjects: {}

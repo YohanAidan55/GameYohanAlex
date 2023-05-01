@@ -56,7 +56,7 @@ public class DefensePanier : MonoBehaviour
                 if (pointDeVie == 0)
                 {
                     _audioSource.clip = panierDefenseClip;
-                    _audioSource.Play();
+                    _audioSource.PlayOneShot(panierDefenseClip);
                     gameObject.GetComponentInParent<PanContent>().isDestroy = true;
                     Destroy(gameObject.transform.GetChild(0).gameObject);
                 }

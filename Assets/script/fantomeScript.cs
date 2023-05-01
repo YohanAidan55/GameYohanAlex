@@ -82,7 +82,7 @@ using UnityEngine;
             }
             else if (modeDeJeu == 1)
             {
-                StartCoroutine(GameObject.Find("player").GetComponent<touchFantome>().LunchLose());
+                StartCoroutine(GameObject.Find("click1").GetComponent<touchFantome>().LunchLose());
             }
         }
 
@@ -134,7 +134,7 @@ using UnityEngine;
     public void transformFantome()
     {
         _audioSource.clip = fantomeNoirClip;
-        _audioSource.Play();
+        _audioSource.PlayOneShot(fantomeNoirClip);
         Destroy(gameObject);
         parent = GameObject.Find("NavMesh2D");
         

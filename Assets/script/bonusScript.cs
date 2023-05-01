@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class bonusScript : MonoBehaviour
@@ -74,7 +75,7 @@ public class bonusScript : MonoBehaviour
                 StartCoroutine(Combo());
             }else if(n == 5)
             {
-                Bombe();
+                StartCoroutine(Bombe());
             }
             _audioSource.clip = bonusClip;
             _audioSource.Play();
@@ -197,13 +198,17 @@ public class bonusScript : MonoBehaviour
     }
 
 
-    void Bombe()
+    public IEnumerator Bombe()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("fantomeMechant");
         foreach (var obj in objs)
         {
             Destroy(obj);
         }
+        Color c = GameObject.Find("globalLigth").GetComponent<Light2D>().color;
+        GameObject.Find("globalLigth").GetComponent<Light2D>().color = Color.white;
+        yield return new WaitForSeconds(0.5f);
+        GameObject.Find("globalLigth").GetComponent<Light2D>().color = c;
 
         Destroy(this.gameObject);
 
