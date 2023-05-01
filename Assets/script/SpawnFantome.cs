@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpawnFantome : MonoBehaviour
 {
@@ -54,6 +55,9 @@ public class SpawnFantome : MonoBehaviour
 
     public int appBonus;
 
+    [SerializeField] NavMeshSurface2d nav;
+    bool hasBuild = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,7 +75,14 @@ public class SpawnFantome : MonoBehaviour
         {
             GameModeBonus = 0;
         }
-       
+
+        
+
+    }
+
+    public void buildnav()
+    {
+        nav.BuildNavMesh();
     }
 
     // Update is called once per frame
@@ -142,6 +153,9 @@ public class SpawnFantome : MonoBehaviour
 
     void spawnFantome(int somme)
     {
+        if(!hasBuild) buildnav();
+        hasBuild = true;
+
         switch (somme)
         {
             case 1:
@@ -178,7 +192,7 @@ public class SpawnFantome : MonoBehaviour
         {
             if(p <= tabBonus[i].GetComponent<bonusScript>().proba)
             {
-                Instantiate(tabBonus[i], spawnPos, Quaternion.identity);
+                Instantiate(tabBonus[i], spawnPos, Quaternion.identity, parent.transform);
                 break;
             }
         }

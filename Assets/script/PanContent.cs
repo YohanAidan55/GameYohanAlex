@@ -48,10 +48,10 @@ public class PanContent : MonoBehaviour
     
     public void CoroutineLose()
     {
-        animDestroy.SetActive(true);
         DestroyFantome(Pan);
+        animDestroy.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().sprite = null;
-        StartCoroutine(GameObject.Find("player").GetComponent<touchFantome>().LunchLose());
+        StartCoroutine(GameObject.Find("click1").GetComponent<touchFantome>().LunchLose());
     }
 
     int destruct(GameObject[] tab)

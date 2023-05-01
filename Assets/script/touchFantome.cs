@@ -292,7 +292,7 @@ public class touchFantome : MonoBehaviour
     {
        if ((other.gameObject.tag == "fantomeMechant") && (GameObject.Find("player").GetComponent<gestionTouch>().nbCartouche > 0) && !release && !exploded)        //si le joueur veut utiliser une cartouche
        {
-            destroySong.Play();
+            destroySong.PlayOneShot(destroySong.clip);
 
             Destroy(other.gameObject);
             mechantTouch = true;
@@ -303,7 +303,8 @@ public class touchFantome : MonoBehaviour
     {
         _audioSource.clip = loseClip;
         _audioSource.Play();
-        yield return new WaitForSeconds(loseClip.length+1);
+        Time.timeScale = 0;
+        yield return new WaitForSeconds(loseClip.length);
         PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount"));
         Debug.Log(PlayerPrefs.GetInt("deadCount"));
         SceneManager.LoadScene("menuLose");

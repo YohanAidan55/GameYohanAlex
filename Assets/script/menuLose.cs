@@ -12,6 +12,15 @@ public class menuLose : MonoBehaviour
     void Start()
     {
         GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
+
+        if (PlayerPrefs.GetInt("Mute") == 0)
+        {
+            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = true;
+        }
+        else
+        {
+            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = false;
+        }
     }
 
     void Update()
