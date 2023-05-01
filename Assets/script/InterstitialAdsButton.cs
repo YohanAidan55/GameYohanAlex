@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
- 
+using UnityEngine.SceneManagement;
+
+
 public class InterstitialAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] string _androidAdUnitId = "Interstitial_Android";
     [SerializeField] string _iOsAdUnitId = "Interstitial_iOS";
     string _adUnitId;
+
+    string nextScene;
  
     void Awake()
     {
@@ -48,8 +52,16 @@ public class InterstitialAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnit
         Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
         // Optionally execute code if the Ad Unit fails to show, such as loading another ad.
     }
+
+    public void waitEnd(string sc)
+    {
+        nextScene = sc;
+    }
  
     public void OnUnityAdsShowStart(string adUnitId) { }
     public void OnUnityAdsShowClick(string adUnitId) { }
-    public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) { }
+    public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) 
+    {
+        SceneManager.LoadScene(nextScene);
+    }
 }

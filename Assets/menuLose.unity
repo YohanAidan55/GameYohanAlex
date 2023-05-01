@@ -755,7 +755,6 @@ GameObject:
   - component: {fileID: 1018416886}
   - component: {fileID: 1018416885}
   - component: {fileID: 1018416884}
-  - component: {fileID: 1018416883}
   m_Layer: 5
   m_Name: rejouer
   m_TagString: Untagged
@@ -783,20 +782,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -178}
   m_SizeDelta: {x: 984.00006, y: 202.08769}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1018416883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018416881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c408c845f254e398d43c861a3540d84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  backMusic: {fileID: 0}
 --- !u!114 &1018416884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,7 +954,6 @@ GameObject:
   - component: {fileID: 1964757776}
   - component: {fileID: 1964757778}
   - component: {fileID: 1964757777}
-  - component: {fileID: 1964757779}
   m_Layer: 5
   m_Name: ScoreFinal
   m_TagString: Untagged
@@ -1039,17 +1023,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1964757775}
   m_CullTransparentMesh: 0
---- !u!114 &1964757779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964757775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c408c845f254e398d43c861a3540d84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  backMusic: {fileID: 0}

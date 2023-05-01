@@ -200,7 +200,6 @@ public class bonusScript : MonoBehaviour
 
     public IEnumerator Bombe()
     {
-
         GameObject[] objs = GameObject.FindGameObjectsWithTag("fantomeMechant");
         foreach (var obj in objs)
         {

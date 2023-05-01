@@ -22,6 +22,7 @@ public class touchFantome : MonoBehaviour
     bool mechantTouch = false;
 
     public bool useMouse;  //est à true pour l'objet touch uniquement
+    bool defaite;
 
     [SerializeField]
     AudioSource destroySong;
@@ -31,6 +32,8 @@ public class touchFantome : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        defaite = false;
+
         _audioSource = GameObject.Find("globalLigth").GetComponent<AudioSource>();
         modeDeJeu = PlayerPrefs.GetInt("mode");
 
@@ -301,12 +304,16 @@ public class touchFantome : MonoBehaviour
 
     public IEnumerator LunchLose()
     {
-        _audioSource.clip = loseClip;
-        _audioSource.Play();
-        Time.timeScale = 0;
-        yield return new WaitForSeconds(loseClip.length);
-        PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount"));
-        Debug.Log(PlayerPrefs.GetInt("deadCount"));
-        SceneManager.LoadScene("menuLose");
+        if (!defaite)
+        {
+            defaite = true;
+            GameObject.Find("globalLigth").GetComponent<Animator>().enabled = true;
+            GameObject.Find("globalLigth").GetComponent<Animator>().SetTrigger("Lose");
+            _audioSource.clip = loseClip;
+            _audioSource.Play();
+            Time.timeScale = 0;
+            yield return new WaitForSeconds(loseClip.length);
+            SceneManager.LoadScene("menuLose");
+        }
     }
 }
