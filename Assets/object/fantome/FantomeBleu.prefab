@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -474597437, guid: 6e83705eeef342841ab0ad7c071f19b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -151,8 +151,7 @@ MonoBehaviour:
   isCatch: 0
   isError: 0
   color: bleu
-  fantomeMechant: {fileID: 1669860343301667205, guid: 466964ca410e37a4990c59a9842538be,
-    type: 3}
+  fantomeMechant: {fileID: 1669860343301667205, guid: 466964ca410e37a4990c59a9842538be, type: 3}
   parent: {fileID: 0}
   speed: 250
   fantomeNoirClip: {fileID: 8300000, guid: f7dbee32a85fe4382b60fdf3c63c3bbf, type: 3}

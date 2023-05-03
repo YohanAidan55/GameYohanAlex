@@ -54,7 +54,7 @@ public class menuLose : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("deadCount") == 3)
         {
-            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
+            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = true;
             addButton.ShowAd();
             PlayerPrefs.SetInt("deadCount", 0);
             addButton.waitEnd(sc);
