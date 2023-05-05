@@ -28,7 +28,7 @@ public class bonusScript : MonoBehaviour
     void Start()
     {
         spawn = GameObject.Find("player");
-        _audioSource = GameObject.Find("Canvas").GetComponent<AudioSource>();
+        _audioSource = GameObject.FindWithTag("Canvas").GetComponent<AudioSource>();
         bonusSprite = this.gameObject.GetComponent<SpriteRenderer>().sprite;
     }
 

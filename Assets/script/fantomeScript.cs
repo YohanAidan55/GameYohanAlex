@@ -28,7 +28,7 @@ using UnityEngine;
 
     void Start()
     {
-        _audioSource = GameObject.Find("Canvas").GetComponent<AudioSource>();
+        _audioSource = GameObject.FindWithTag("Canvas").GetComponent<AudioSource>();
         modeDeJeu = PlayerPrefs.GetInt("mode");
     }
 
