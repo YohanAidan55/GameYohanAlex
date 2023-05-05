@@ -16,7 +16,7 @@ public class DefensePanier : MonoBehaviour
 
         private void Start()
         {
-            _audioSource = GameObject.Find("Canvas").GetComponent<AudioSource>();
+            _audioSource = GameObject.FindWithTag("Canvas").GetComponent<AudioSource>();
             color = gameObject.GetComponentInParent<PanContent>().color;
         }
 

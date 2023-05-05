@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - fantomeMechant
+  - flame
+  - light
+  - defense
+  - systeme
+  - panier
+  - tapis
+  - listPanier
+  - bonus
+  - fantome
+  - Canvas
   layers:
   - Default
   - TransparentFX
