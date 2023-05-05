@@ -59,13 +59,9 @@ public class menuLose : MonoBehaviour
             PlayerPrefs.SetInt("deadCount", 0);
             addButton.waitEnd(sc);
         }
-        else if (PlayerPrefs.GetInt("deadCount") > 3)
-        {
-            PlayerPrefs.SetInt("deadCount", 0);
-            SceneManager.LoadScene(sc);
-        }
         else
         {
+            addButton.LoadAd();
             SceneManager.LoadScene(sc);
         }
     }
