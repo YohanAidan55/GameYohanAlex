@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour{
 
@@ -12,12 +13,16 @@ public class MainMenu : MonoBehaviour{
 
     public bool mute;
 
+    InterstitialAdsButton addButton;
+
     void Awake()
     {
+
         GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
         mute = PlayerPrefs.GetInt("Mute") != 0;
         if (SceneManager.GetActiveScene().name == "menu")
         {
+            addButton = GameObject.Find("AdsButton").GetComponent<InterstitialAdsButton>();
             GameObject.Find("Mute").GetComponent<Image>().sprite = mute ? spMute : spDemute;
         }
 
@@ -36,18 +41,20 @@ public class MainMenu : MonoBehaviour{
 
     public void PlayMode1()
     {
+        PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount") + 1);
+        Debug.Log(PlayerPrefs.GetInt("deadCount"));
         mode = 1;
         PlayerPrefs.SetInt("mode", mode);
-        PlayerPrefs.SetInt("deadCount", 0);
-        SceneManager.LoadScene("game");
+        addButton.RunAd("game");
     }
     
     public void PlayMode2()
     {
+        PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount") + 1);
+        Debug.Log(PlayerPrefs.GetInt("deadCount"));
         mode = 2;
         PlayerPrefs.SetInt("mode", mode);
-        PlayerPrefs.SetInt("deadCount", 0);
-        SceneManager.LoadScene("game");
+        addButton.RunAd("game");
     }
 
 
@@ -76,4 +83,5 @@ public class MainMenu : MonoBehaviour{
         int i = b ? 1 : 0;
         PlayerPrefs.SetInt("Mute", i);
     }
+
 }

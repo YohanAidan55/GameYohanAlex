@@ -113,6 +113,7 @@ using UnityEngine;
                     List<GameObject> listFant = other.gameObject.GetComponent<PanContent>().Pan;
                     listFant.Add(gameObject);      //ajoute le fantome au tableau du panier
                     gameObject.transform.parent = other.gameObject.transform;    //définit le panier du fantome comme étant son parent
+                    CorrectPos();
                     ajout = true;
                 }
                 isError = false;
@@ -152,6 +153,14 @@ using UnityEngine;
                 this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2) * Time.deltaTime);
                 n = 0;
             }
+        }
+    }
+
+    public void CorrectPos()
+    {
+        if (transform.localPosition.x < -6.30 || transform.localPosition.x > 5.85 || transform.localPosition.y < -6 || transform.localPosition.y > 5.30)
+        {
+            transform.localPosition = new Vector2(0, 0);
         }
     }
 }
