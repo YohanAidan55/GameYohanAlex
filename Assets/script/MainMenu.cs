@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour{
 
@@ -12,39 +13,48 @@ public class MainMenu : MonoBehaviour{
 
     public bool mute;
 
-    void Start()
+    InterstitialAdsButton addButton;
+
+    void Awake()
     {
+
         GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
         mute = PlayerPrefs.GetInt("Mute") != 0;
-        if (SceneManager.GetActiveScene().name == "menu"){
+        if (SceneManager.GetActiveScene().name == "menu")
+        {
+            addButton = GameObject.Find("AdsButton").GetComponent<InterstitialAdsButton>();
             GameObject.Find("Mute").GetComponent<Image>().sprite = mute ? spMute : spDemute;
         }
 
-        if (PlayerPrefs.GetInt("Mute") == 0)
+        if (mute)
         {
-            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = true;
+            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = true;
         }
         else
         {
-            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = false;
+            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
         }
+
         
+
     }
 
     public void PlayMode1()
     {
+        PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount") + 1);
+        Debug.Log(PlayerPrefs.GetInt("deadCount"));
         mode = 1;
         PlayerPrefs.SetInt("mode", mode);
-        PlayerPrefs.SetInt("deadCount", 0);
-        SceneManager.LoadScene("game");
+        addButton.RunAd("game");
     }
     
     public void PlayMode2()
     {
+        PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount") + 1);
+        Debug.Log(PlayerPrefs.GetInt("deadCount"));
         mode = 2;
         PlayerPrefs.SetInt("mode", mode);
-        PlayerPrefs.SetInt("deadCount", 0);
-        SceneManager.LoadScene("game");
+        addButton.RunAd("game");
     }
 
 
@@ -65,7 +75,7 @@ public class MainMenu : MonoBehaviour{
         setPlayerParam(mute);
 
         GameObject.Find("Mute").GetComponent<Image>().sprite = mute ? spMute : spDemute;
-        GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = !mute;
+        GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = mute;
     }
 
     void setPlayerParam(bool b)
@@ -73,4 +83,5 @@ public class MainMenu : MonoBehaviour{
         int i = b ? 1 : 0;
         PlayerPrefs.SetInt("Mute", i);
     }
+
 }

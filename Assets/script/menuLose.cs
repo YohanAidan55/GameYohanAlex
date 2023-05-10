@@ -23,15 +23,14 @@ public class menuLose : MonoBehaviour
 
         if (PlayerPrefs.GetInt("Mute") == 0)
         {
-            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = true;
+            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
         }
         else
         {
-            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = false;
+            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = true;
         }
 
-        PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount") + 1);
-        Debug.Log(PlayerPrefs.GetInt("deadCount"));
+        
     }
 
     void Update()
@@ -42,32 +41,15 @@ public class menuLose : MonoBehaviour
 
     public void Play()
     {
-        RunAd("game");
+        PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount") + 1);
+        Debug.Log(PlayerPrefs.GetInt("deadCount"));
+        addButton.RunAd("game");
     }
 
     public void MainMenu()
     {
-        RunAd("menu");
+        addButton.RunAd("menu");
     }
-
-    private void RunAd(string sc)
-    {
-        if (PlayerPrefs.GetInt("deadCount") == 3)
-        {
-            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = true;
-            addButton.ShowAd();
-            PlayerPrefs.SetInt("deadCount", 0);
-            addButton.waitEnd(sc);
-        }
-        else
-        {
-            addButton.LoadAd();
-            SceneManager.LoadScene(sc);
-        }
-    }
-
-
-
 
 }
 

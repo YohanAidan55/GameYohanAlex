@@ -38,7 +38,8 @@ public class InterstitialAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnit
     // Implement Load Listener and Show Listener interface methods: 
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
-        // Optionally execute code if the Ad Unit successfully loads content.
+        this.ShowAd();
+        PlayerPrefs.SetInt("deadCount", 0);
     }
  
     public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
@@ -63,5 +64,20 @@ public class InterstitialAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnit
     public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) 
     {
         SceneManager.LoadScene(nextScene);
+    }
+
+    public void RunAd(string sc)
+    {
+        if (PlayerPrefs.GetInt("deadCount") == 3)
+        {
+            this.waitEnd(sc);
+            this.LoadAd();
+            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = true;
+            OnUnityAdsAdLoaded(_adUnitId);                       
+        }
+        else
+        {
+            SceneManager.LoadScene(sc);
+        }
     }
 }

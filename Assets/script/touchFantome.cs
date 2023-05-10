@@ -78,7 +78,7 @@ public class touchFantome : MonoBehaviour
                     }
                     exploded = true;    //si l'objet est en mouvement, alors la cartouche ne fonctionne pas 
 
-                    if (transform.position.x < -9.5 || transform.position.x > 9.5 || transform.position.y > 4 || transform.position.y < -3.5)   //Le jouer sort de la zone
+                    if (transform.position.x < -Screen.width/2 || transform.position.x > Screen.width/2 || transform.position.y > Screen.height/2 || transform.position.y < -Screen.height/2)   //Le jouer sort de la zone
                     {
                     if ((clicFantome)&&(fantom != null))
                     {
@@ -115,7 +115,7 @@ public class touchFantome : MonoBehaviour
                         fantom.transform.position = transform.position;
                     }
 
-                if (transform.position.x < -9.5 || transform.position.x > 9.5 || transform.position.y > 4 || transform.position.y < -3.5)   //Le jouer sort de la zone
+                if (transform.position.x < -Screen.width / 2 || transform.position.x > Screen.width / 2 || transform.position.y > Screen.height / 2 || transform.position.y < -Screen.height / 2)   //Le jouer sort de la zone
                 {
                     if ((clicFantome)&&(fantom != null))
                     {
@@ -150,7 +150,7 @@ public class touchFantome : MonoBehaviour
 
                     if ((clicFantome)&&(fantom != null))
                     {
-                        if (fantom.GetComponent<fantomeScript>().isError)
+                    if (fantom.GetComponent<fantomeScript>().isError)
                         {
                             StartCoroutine(LunchLose());
                         }
@@ -163,7 +163,7 @@ public class touchFantome : MonoBehaviour
                             }
                             else
                             {
-                            fantom.GetComponent<fantomeScript>().transformFantome();
+                                fantom.GetComponent<fantomeScript>().transformFantome();
                                 fantom = null;
                             }
                         }
@@ -177,7 +177,7 @@ public class touchFantome : MonoBehaviour
 
 
 
-        if (Input.GetMouseButtonDown(0) && useMouse && status == -1)    //souris
+ /*       if (Input.GetMouseButtonDown(0) && useMouse && status == -1)    //souris
         {
 
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -190,7 +190,7 @@ public class touchFantome : MonoBehaviour
             }
             release = false;
             Debug.Log(transform.position.x);
-            if (transform.position.x < -9.5 || transform.position.x > 9.5 || transform.position.y > 4 || transform.position.y < -3.5)   //Le jouer sort de la zone
+            if (transform.position.x < -15 || transform.position.x > 15 || transform.position.y > 4 || transform.position.y < -3.5)   //Le jouer sort de la zone
             {
                 if (clicFantome)
                 {
@@ -247,7 +247,7 @@ public class touchFantome : MonoBehaviour
 
             refreshTouch();
             }
-
+ 
 
             if ((release == false) && useMouse)
             {
@@ -264,7 +264,7 @@ public class touchFantome : MonoBehaviour
                 {
                     exploded = true;
                 }
-            }
+            }*/
 
 
 
@@ -278,27 +278,34 @@ public class touchFantome : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if ((other.gameObject.tag == "fantome") && (other.gameObject.GetComponent<fantomeScript>().move == false) && (fantom == null))          //si le joueur touche un fantome pas emprisoné, et qu'il en a pas déjà attrapé un
+        if (!defaite)
         {
-            clicFantome = true;
-            fantom = other.gameObject;
-            fantom.GetComponent<fantomeScript>().isCatch = true;
+            if ((other.gameObject.tag == "fantome") && (other.gameObject.GetComponent<fantomeScript>().move == false) && (fantom == null))          //si le joueur touche un fantome pas emprisoné, et qu'il en a pas déjà attrapé un
+            {
+                clicFantome = true;
+                fantom = other.gameObject;
+                fantom.GetComponent<fantomeScript>().isCatch = true;
+            }
+
+            if ((other.gameObject.tag == "bonus") && !exploded)         //si le joueur touche un bonus non utilisé
+            {
+                other.gameObject.GetComponent<bonusScript>().BonusSelected();
+            }
         }
 
-        if ((other.gameObject.tag == "bonus") && !exploded)         //si le joueur touche un bonus non utilisé
-        {
-            other.gameObject.GetComponent<bonusScript>().BonusSelected();
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-       if ((other.gameObject.tag == "fantomeMechant") && (GameObject.Find("player").GetComponent<gestionTouch>().nbCartouche > 0) && !release && !exploded)        //si le joueur veut utiliser une cartouche
-       {
-            destroySong.PlayOneShot(destroySong.clip);
+        if (!defaite)
+        {
+            if ((other.gameObject.tag == "fantomeMechant") && (GameObject.Find("player").GetComponent<gestionTouch>().nbCartouche > 0) && !release && !exploded)        //si le joueur veut utiliser une cartouche
+            {
+                destroySong.PlayOneShot(destroySong.clip);
 
-            Destroy(other.gameObject);
-            mechantTouch = true;
+                Destroy(other.gameObject);
+                mechantTouch = true;
+            }
         }
     }
 
