@@ -12,23 +12,26 @@ public class MainMenu : MonoBehaviour{
 
     public bool mute;
 
-    void Start()
+    void Awake()
     {
         GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
         mute = PlayerPrefs.GetInt("Mute") != 0;
-        if (SceneManager.GetActiveScene().name == "menu"){
+        if (SceneManager.GetActiveScene().name == "menu")
+        {
             GameObject.Find("Mute").GetComponent<Image>().sprite = mute ? spMute : spDemute;
         }
 
-        if (PlayerPrefs.GetInt("Mute") == 0)
+        if (mute)
         {
-            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = true;
+            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = true;
         }
         else
         {
-            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = false;
+            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
         }
+
         
+
     }
 
     public void PlayMode1()
@@ -65,7 +68,7 @@ public class MainMenu : MonoBehaviour{
         setPlayerParam(mute);
 
         GameObject.Find("Mute").GetComponent<Image>().sprite = mute ? spMute : spDemute;
-        GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = !mute;
+        GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = mute;
     }
 
     void setPlayerParam(bool b)

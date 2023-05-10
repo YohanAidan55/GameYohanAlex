@@ -23,11 +23,11 @@ public class menuLose : MonoBehaviour
 
         if (PlayerPrefs.GetInt("Mute") == 0)
         {
-            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = true;
+            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
         }
         else
         {
-            GameObject.Find("Main Camera").GetComponent<AudioListener>().enabled = false;
+            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = true;
         }
 
         PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount") + 1);
