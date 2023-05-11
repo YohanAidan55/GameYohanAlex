@@ -10,6 +10,8 @@ public class InterstitialAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnit
     string _adUnitId;
 
     string nextScene;
+
+    bool adsLoad = false;
  
     void Awake()
     {
@@ -39,7 +41,6 @@ public class InterstitialAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnit
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
         this.ShowAd();
-        PlayerPrefs.SetInt("deadCount", 0);
     }
  
     public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
@@ -63,19 +64,22 @@ public class InterstitialAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnit
     public void OnUnityAdsShowClick(string adUnitId) { }
     public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState) 
     {
+        adsLoad = false;
         SceneManager.LoadScene(nextScene);
     }
 
     public void RunAd(string sc)
     {
-        if (PlayerPrefs.GetInt("deadCount") == 3)
+        if (PlayerPrefs.GetInt("deadCount") >= 3)
         {
+            adsLoad = true;
             this.waitEnd(sc);
             this.LoadAd();
             GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = true;
-            OnUnityAdsAdLoaded(_adUnitId);                       
+            PlayerPrefs.SetInt("deadCount", 0);
+
         }
-        else
+        else if(!adsLoad)
         {
             SceneManager.LoadScene(sc);
         }
