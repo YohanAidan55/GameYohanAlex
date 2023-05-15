@@ -25,6 +25,7 @@ public class InterstitialAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnit
     public void LoadAd()
     {
         // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
+        GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = true;
         Debug.Log("Loading Ad: " + _adUnitId);
         Advertisement.Load(_adUnitId, this);
     }
@@ -75,7 +76,6 @@ public class InterstitialAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnit
             adsLoad = true;
             this.waitEnd(sc);
             this.LoadAd();
-            GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = true;
             PlayerPrefs.SetInt("deadCount", 0);
 
         }
