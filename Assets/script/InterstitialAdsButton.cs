@@ -71,7 +71,7 @@ public class InterstitialAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnit
 
     public void RunAd(string sc)
     {
-        if (PlayerPrefs.GetInt("deadCount") >= 3)
+        if (PlayerPrefs.GetInt("deadCount") >= 4)
         {
             adsLoad = true;
             this.waitEnd(sc);
