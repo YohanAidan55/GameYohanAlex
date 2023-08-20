@@ -56,7 +56,7 @@ public class LeaderboardShowcase : MonoBehaviour
 
     public void Submit()
     {
-
+        PlayerPrefs.SetString("playerActuel", _playerUsernameInput.text);
 
         if (!isSubmit)
         {
