@@ -314,6 +314,7 @@ public class touchFantome : MonoBehaviour
         if (!defaite)
         {
             defaite = true;
+            GameObject.Find("player").GetComponent<Score>().lose(modeDeJeu);
             GameObject.Find("globalLigth").GetComponent<Animator>().enabled = true;
             GameObject.Find("globalLigth").GetComponent<Animator>().SetTrigger("Lose");
             _audioSource.clip = loseClip;
