@@ -30,7 +30,6 @@ public class menuLose : MonoBehaviour
             GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = true;
         }
 
-        
     }
 
     public void Play()

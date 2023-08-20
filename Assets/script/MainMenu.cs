@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,7 @@ public class MainMenu : MonoBehaviour{
 
     [SerializeField] Sprite spMute, spDemute;
     [SerializeField] Image monImage;
+    [SerializeField] TextMeshPro hsclassique, hsdynamique;
 
     public bool mute;
 
@@ -17,6 +19,7 @@ public class MainMenu : MonoBehaviour{
 
     void Awake()
     {
+
 
         GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
         mute = PlayerPrefs.GetInt("Mute") != 0;
@@ -35,8 +38,9 @@ public class MainMenu : MonoBehaviour{
             GameObject.Find("BackGroundMusic").GetComponent<AudioSource>().mute = false;
         }
 
+        hsclassique.text = "Meilleur score: " + PlayerPrefs.GetInt("hsclassique");
+        hsdynamique.text = "Meilleur score: " + PlayerPrefs.GetInt("hsdynamique"); ;
         
-
     }
 
     public void PlayMode1()

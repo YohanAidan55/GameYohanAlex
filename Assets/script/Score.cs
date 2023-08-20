@@ -14,6 +14,24 @@ public class Score : MonoBehaviour
     void Update()
     {
         GameObject.Find("Score").GetComponent<Text>().text = sc.ToString();
+    }
+
+    public void lose(int mode)
+    {
         PlayerPrefs.SetInt("score", sc);
+        if (mode == 1)
+        {
+            if (sc > PlayerPrefs.GetInt("hsclassique"))
+            {
+                PlayerPrefs.SetInt("hsclassique", sc);
+            }
+        }
+        else
+        {
+            if (sc > PlayerPrefs.GetInt("hsdynamique"))
+            {
+                PlayerPrefs.SetInt("hsdynamique", sc);
+            }
+        }
     }
 }
