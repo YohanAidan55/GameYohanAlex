@@ -33,12 +33,6 @@ public class menuLose : MonoBehaviour
         
     }
 
-    void Update()
-        {
-            score = PlayerPrefs.GetInt("score");
-            GameObject.Find("ScoreFinal").GetComponent<Text>().text = "Score: " +score;
-        }
-
     public void Play()
     {
         PlayerPrefs.SetInt("deadCount", PlayerPrefs.GetInt("deadCount") + 1);
