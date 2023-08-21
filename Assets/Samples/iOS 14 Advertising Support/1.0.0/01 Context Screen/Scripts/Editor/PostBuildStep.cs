@@ -7,7 +7,6 @@ using System.IO;
 
 public class PostBuildStep
 {
-#if iOS
     // Set the IDFA request description:
     const string k_TrackingDescription = "Your data will be used to provide you a better and personalized ad experience.";
 
@@ -40,5 +39,4 @@ public class PostBuildStep
         // Save changes to the plist:
         File.WriteAllText(plistPath, plistObj.WriteToString());
     }
-#endif
 }
